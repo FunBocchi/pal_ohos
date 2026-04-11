@@ -1,0 +1,36 @@
+{
+  "module": {
+    "name": "tablet",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "TabletAbility",
+    "deviceTypes": [
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "name": "TabletAbility",
+        "srcEntry": "./ets/tabletability/TabletAbility.ets",
+        "description": "$string:TabletAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:TabletAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
