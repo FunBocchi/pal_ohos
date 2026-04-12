@@ -75,3 +75,32 @@ void XComponentBridgeRegistry::exportNapi(napi_env env, napi_value exports) {
         }
     }
 }
+
+void XComponentBridgeRegistry::setNativeXComponent(std::string &id, OH_NativeXComponent *native_xcomponent) {
+    SAMPLE_LOGI("Set native XComponent, Id = %{public}s.", id.c_str());
+    if (native_xcomponent == nullptr) {
+        SAMPLE_LOGE("XComponent null");
+        return;
+    }
+
+    if (native_xcomponent_map_.find(id) == native_xcomponent_map_.end()) {
+        native_xcomponent_map_[id] = native_xcomponent;
+        return;
+    }
+
+    if (native_xcomponent_map_[id] != native_xcomponent) {
+        OH_NativeXComponent *tmp = native_xcomponent_map_[id];
+        delete tmp;
+        tmp = nullptr;
+        native_xcomponent_map_[id] = native_xcomponent;
+    }
+}
+
+NativeGameBridge *XComponentBridgeRegistry::getRender(std::string &id) {
+    if (render_map_.find(id) == render_map_.end()) {
+        NativeGameBridge *instance = NativeGameBridge::getInstance(id);
+        render_map_[id] = instance;
+        return instance;
+    }
+    return render_map_[id];
+}
