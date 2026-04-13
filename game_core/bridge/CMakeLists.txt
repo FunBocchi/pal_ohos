@@ -9,6 +9,5 @@ add_library(
 target_include_directories(
   game_core_bridge
   PRIVATE
-  ${GAME_CORE_ROOT}/include/bridge
-  ${GAME_CORE_ROOT}/include/util
+  ${GAME_CORE_ROOT}/include
 )

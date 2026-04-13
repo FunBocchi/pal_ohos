@@ -7,5 +7,5 @@ add_library(
 target_include_directories(
   game_core_util
   PRIVATE
-  ${GAME_CORE_ROOT}/include/util
+  ${GAME_CORE_ROOT}/include
 )
