@@ -126,6 +126,7 @@ typedef unsigned char UCHAR, *PUCHAR;
 typedef unsigned short WORD, *LPWORD;
 typedef unsigned int DWORD, *LPDWORD;
 typedef int INT, *LPINT;
+typedef bool BOOL;
 
 #if !defined(__APPLE__) && !defined(GEKKO)
 #endif
@@ -256,13 +257,13 @@ typedef enum tagLOGLEVEL {
 #define PAL_LOG_MAX_OUTPUTS (LOGLEVEL_MAX + 1)
 
 #if defined(DEBUG) || defined(_DEBUG)
-# define PAL_DEFAULT_LOGLEVEL  LOGLEVEL_MIN
+#define PAL_DEFAULT_LOGLEVEL LOGLEVEL_MIN
 #else
-# define PAL_DEFAULT_LOGLEVEL  LOGLEVEL_MAX
+#define PAL_DEFAULT_LOGLEVEL LOGLEVEL_MAX
 #endif
 
 #ifndef PAL_HAS_CONFIG_PAGE
-# define PAL_HAS_CONFIG_PAGE   FALSE
+#define PAL_HAS_CONFIG_PAGE FALSE
 #endif
 
 #define PAL_MAX_GLOBAL_BUFFERS 4
@@ -273,14 +274,14 @@ typedef enum tagLOGLEVEL {
 // If you define this constant, please put the default separator at first.
 //
 #ifndef PAL_PATH_SEPARATORS
-# define PAL_PATH_SEPARATORS "/"
+#define PAL_PATH_SEPARATORS "/"
 #endif
 
 #ifndef PAL_IS_PATH_SEPARATOR
-# define PAL_IS_PATH_SEPARATOR(x) ((x) == '/')
+#define PAL_IS_PATH_SEPARATOR(x) ((x) == '/')
 #endif
 
 // 该头文件作用未知
-// #include "util/adplug/opltypes.h"
+#include "util/adplug/opltypes.h"
 
 #endif // pal_ohos_COMMON_H
