@@ -20,6 +20,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
+// 当前仅对该文件进行头文件声明，因具体实现不再通过公用接口而是鸿蒙官方提供的native接口，需要进一步改良
 
 #ifndef pal_ohos_UTIL_H
 #define pal_ohos_UTIL_H

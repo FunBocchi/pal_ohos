@@ -48,7 +48,7 @@
 #include <string>
 // <stdbool.h>已移除
 
-#include "engine/sdl_compat.h"
+#include "engine/sdl_compat/sdl_compat.h"
 
 #define __WIDETEXT(quote) L##quote
 #define WIDETEXT(quote) __WIDETEXT(quote)
