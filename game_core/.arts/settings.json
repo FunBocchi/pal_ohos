@@ -1,0 +1,20 @@
+{
+    "cpp-build-tool.CMakeBuildTool.updateFile": true,
+    "wecode-cpp.clangd.excludePaths": [
+        "**/cmake-build-debug/**"
+    ],
+    "wecode-cpp.wecodeDb.excludePaths": [
+        "**/.mm/**",
+        "**/.git/**",
+        "**/build/**",
+        "**/output/**",
+        "**/cmake-build-debug/**"
+    ],
+    "wecode-cpp.excludePaths": [
+        "**/.mm/**",
+        "**/.git/**",
+        "**/build/**",
+        "**/output/**",
+        "**/cmake-build-debug/**"
+    ]
+}
