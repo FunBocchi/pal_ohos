@@ -29,6 +29,8 @@
 
 #include <stdint.h>
 
+#include <rawfile/raw_file.h>
+
 /**
  * 以下是针对各种类型的别名设置
  * 同等于源项目中同名文件的定位
@@ -37,4 +39,6 @@ using SHORT = short;
 using WORD = unsigned short;
 using USHORT = unsigned short;
 
+// 以下为额外添加的别名（区别于源项目）
+using LPRAWFILE = RawFile *;//用于替代FILE用以读取文件
 #endif // pal_ohos_COMMON_H
