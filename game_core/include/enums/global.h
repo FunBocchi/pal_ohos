@@ -26,6 +26,7 @@
 #define pal_ohos_GLOBAL_H
 
 #include "util/common.h"
+#include "util/palcommon.h"
 
 // 角色状态
 enum class CharaStatus : uint8_t {
@@ -132,6 +133,7 @@ struct ObjectPlayer {
     WORD script_on_friend_death_;
     WORD script_on_dying_;
 };
+typedef ObjectPlayer OBJECT_PLAYER;
 
 enum class ItemFlag {
     Usable = (1 << 0),
@@ -153,6 +155,7 @@ struct ObjectItemDos {
     WORD script_on_throw_; // 丢弃时触发的脚本
     WORD flags_;
 };
+typedef ObjectItemDos OBJECT_ITEM_DOS;
 
 // 物品（增强）
 struct ObjectItem {
@@ -164,6 +167,7 @@ struct ObjectItem {
     WORD script_desc_;
     WORD flags_;
 };
+typedef ObjectItem OBJECT_ITEM;
 
 enum class MagicFlag {
     UsableOutSideBattle = (1 << 0),
@@ -181,5 +185,75 @@ struct ObjectMagicDOS {
     WORD reserved2_;
     WORD flags_;
 };
+typedef ObjectMagicDOS OBJECT_MAGIC_DOS;
+struct ObjectMagic {
+    WORD number_;
+    WORD reserved1_;
+    WORD script_on_success_;
+    WORD script_on_use_;
+    WORD reserved2_;
+    WORD flags_;
+};
+typedef ObjectMagicDOS OBJECT_MAGIC;
 
+// 敌人
+struct ObjectEnemy {
+    WORD enemy_id_;
+    WORD resistance_to_sorcery_;
+    // 脚本
+    WORD on_turn_start_;
+    WORD on_battle_end_;
+    WORD on_ready_;
+};
+typedef ObjectEnemy OBJECT_ENEMY;
+
+// 毒药
+struct ObjectPosion {
+    WORD level_;
+    WORD color_;
+    WORD player_script_;
+    WORD reserved_;
+    WORD enemy_script_;
+};
+typedef ObjectPosion OBJECT_POISON;
+
+union ObjectDos {
+    WORD rgw_data[6];
+    OBJECT_PLAYER player_;
+    OBJECT_ITEM_DOS item_;
+    OBJECT_MAGIC_DOS magic_;
+    OBJECT_ENEMY enemy_;
+    OBJECT_POISON poison_;
+};
+typedef ObjectDos OBJECT_DOS, *LPOBJECT_DOS;
+
+union Object {
+    WORD rgw_data[7];
+    OBJECT_PLAYER player_;
+    OBJECT_ITEM item_;
+    OBJECT_MAGIC magic_;
+    OBJECT_ENEMY enemy_;
+    OBJECT_POISON poison_;
+};
+typedef Object OBJECT, *LPOBJECT;
+
+typedef struct ScriptEntry {
+    WORD operation_;
+    WORD rgw_operand_[3];
+} SCRIPTENTRY, *LPSCRIPTENTRY;
+
+// 库存
+typedef struct Inventory {
+    WORD item_;
+    USHORT amount_;
+    USHORT amount_in_use_;
+} INVENTORY, *LPINVENTORY;
+
+typedef struct Store {
+    WORD rgw_items_[MAX_STORE_ITEM];
+} STORE, *LPSTORE;
+
+typedef struct Enemy{
+    
+} ENEMY,*LPENEMY;
 #endif // pal_ohos_GLOBAL_H
