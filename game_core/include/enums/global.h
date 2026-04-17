@@ -27,6 +27,7 @@
 
 #include "util/common.h"
 #include "util/palcommon.h"
+#include <array>
 
 // 角色状态
 enum class CharaStatus : uint8_t {
@@ -208,34 +209,31 @@ struct ObjectEnemy {
 typedef ObjectEnemy OBJECT_ENEMY;
 
 // 毒药
-struct ObjectPosion {
+typedef struct ObjectPosion {
     WORD level_;
     WORD color_;
     WORD player_script_;
     WORD reserved_;
     WORD enemy_script_;
-};
-typedef ObjectPosion OBJECT_POISON;
+}OBJECT_POISON;
 
-union ObjectDos {
+typedef union ObjectDos {
     WORD rgw_data[6];
     OBJECT_PLAYER player_;
     OBJECT_ITEM_DOS item_;
     OBJECT_MAGIC_DOS magic_;
     OBJECT_ENEMY enemy_;
     OBJECT_POISON poison_;
-};
-typedef ObjectDos OBJECT_DOS, *LPOBJECT_DOS;
+} OBJECT_DOS, *LPOBJECT_DOS;
 
-union Object {
+typedef union Object {
     WORD rgw_data[7];
     OBJECT_PLAYER player_;
     OBJECT_ITEM item_;
     OBJECT_MAGIC magic_;
     OBJECT_ENEMY enemy_;
     OBJECT_POISON poison_;
-};
-typedef Object OBJECT, *LPOBJECT;
+} OBJECT, *LPOBJECT;
 
 typedef struct ScriptEntry {
     WORD operation_;
@@ -253,7 +251,47 @@ typedef struct Store {
     WORD rgw_items_[MAX_STORE_ITEM];
 } STORE, *LPSTORE;
 
-typedef struct Enemy{
-    
-} ENEMY,*LPENEMY;
+typedef struct Enemy {
+    // 动画帧数
+    WORD idle_frames_;     // 待机
+    WORD magic_frames_;    // 魔法攻击
+    WORD attack_frames_;   // 普通攻击
+    WORD idle_anim_speed_; // 闲置动画播放速度
+    WORD act_wait_frames_; // 动作等待帧数？
+    WORD y_pos_offset_;    // Y轴位置偏移量
+    // 音效
+    SHORT attack_sound_; // 普通攻击
+    SHORT action_sound_; // 动作？
+    SHORT magic_sound_;  // 施法
+    SHORT death_sound_;  // 死亡
+    SHORT call_sound_;   // 登场
+    // 属性 及 特性
+    WORD health_;                              // 血量
+    WORD exp_;                                 // 经验值（击败获得）
+    WORD cash_;                                // 金钱（击败获得）
+    WORD level_;                               // 等级
+    WORD magic_;                               // 可使用魔法编号
+    WORD magic_rate_;                          // 施法概率
+    WORD attack_equiv_item_;                   // 普攻等效道具编号
+    WORD attack_equiv_item_rate_;              // 等效道具触发概率
+    WORD steal_item_which_;                    // 偷取该敌人可获得道具编号
+    WORD steal_item_total_;                    // 可偷取道具总数
+    WORD attack_strength_normal_;              // 物攻
+    WORD attack_strength_magical_;             // 法强
+    WORD defence_;                             // 防御力（综合）
+    WORD dexterity_;                           // 敏捷
+    WORD flee_rate_;                           // 逃跑成功率
+    WORD poison_resistance_;                   // 中毒抗性
+    WORD elem_resistance[NUM_MAGIC_ELEMENTAL]; // 元素魔法抗性
+    WORD physical_resistance_;                 // 物理攻击抗性
+    WORD dual_move_;                           // 是否能进行双重行动
+    WORD collect_value_;                       // 收集该敌人获取物品的价值
+} ENEMY, *LPENEMY;
+
+typedef struct EnemyTeam {
+    WORD rgw_enemy_[MAX_ENEMIES_IN_TEAM];
+} ENEMYTEAM, *LPENEMYTEAM;
+
+using Players = std::array<WORD, MAX_PLAYER_ROLES>;
+
 #endif // pal_ohos_GLOBAL_H
