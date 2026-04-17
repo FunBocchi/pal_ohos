@@ -25,7 +25,17 @@
 #ifndef pal_ohos_PALCOMMON_H
 #define pal_ohos_PALCOMMON_H
 
+// 玩家队伍最大成员数
+#define MAX_PLAYER_ROLES 6
+
 // 商店中的最大商品数
 #define MAX_STORE_ITEM 9
+
+// 魔法属性总数
+#define NUM_MAGIC_ELEMENTAL 5
+
+// 队伍中最大敌人数
+#define MAX_ENEMIES_IN_TEAM 5
+
 
 #endif // pal_ohos_PALCOMMON_H
