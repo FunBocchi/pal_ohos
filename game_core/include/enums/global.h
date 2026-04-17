@@ -215,7 +215,7 @@ typedef struct ObjectPosion {
     WORD player_script_;
     WORD reserved_;
     WORD enemy_script_;
-}OBJECT_POISON;
+} OBJECT_POISON;
 
 typedef union ObjectDos {
     WORD rgw_data[6];
@@ -276,8 +276,8 @@ typedef struct Enemy {
     WORD attack_equiv_item_rate_;              // 等效道具触发概率
     WORD steal_item_which_;                    // 偷取该敌人可获得道具编号
     WORD steal_item_total_;                    // 可偷取道具总数
-    WORD attack_strength_normal_;              // 物攻
-    WORD attack_strength_magical_;             // 法强
+    WORD attack_strength_;                     // 物攻
+    WORD magic_strength;                       // 法强
     WORD defence_;                             // 防御力（综合）
     WORD dexterity_;                           // 敏捷
     WORD flee_rate_;                           // 逃跑成功率
@@ -292,6 +292,92 @@ typedef struct EnemyTeam {
     WORD rgw_enemy_[MAX_ENEMIES_IN_TEAM];
 } ENEMYTEAM, *LPENEMYTEAM;
 
+// 对源代码进行了修改，使用array实现相同功能，暂时不知道会不会对二进制源码的读取产生影响
 using Players = std::array<WORD, MAX_PLAYER_ROLES>;
+
+typedef struct PlayerRoles {
+    Players avatar_;                                                  // 立绘（显示在状态界面）
+    Players sprite_num_in_battle_;                                    // 战斗中显示的精灵图编号，来自F.MKF
+    Players sprite_num_;                                              // 普通场景中显示的精灵图编号，来自MGO.MKF
+    Players name_;                                                    // 角色名称，来自WORD.DAT
+    Players attack_all_;                                              // 是否可以群体攻击
+    Players unknown1_;                                                // 占位符
+    Players level_;                                                   // 等级
+    Players max_hp_;                                                  // 最大生命值
+    Players max_mp_;                                                  // 最大法力值
+    Players hp_;                                                      // 当前生命值
+    Players mp_;                                                      // 当前法力值
+    WORD equipment[MAX_PLAYER_EQUIPMENTS][MAX_PLAYER_ROLES];          // 装备信息
+    Players attack_strength_;                                         // 物攻
+    Players magic_strength_;                                          // 法强
+    Players defence_;                                                 // 对各种攻击的综合防御力
+    Players dexterity_;                                               // 敏捷
+    Players flee_rate_;                                               // 逃跑成功率
+    Players poison_resistance_;                                       // 中毒抗性
+    WORD elemental_resistance[NUM_MAGIC_ELEMENTAL][MAX_PLAYER_ROLES]; // 元素魔法抗性
+    Players unknown2_;                                                // 占位符
+    Players unknown3_;                                                // 占位符
+    Players unknown4_;                                                // 占位符
+    Players covered_by_;                                              // 当生命值过低或者处于异常状态时，谁来保护
+    WORD magic_[MAX_PLAYER_MAGICS][MAX_PLAYER_ROLES];                 // 可学习的法术
+    Players walk_frames_;                                             // 行动帧数？
+    Players cooperative_magic_;                                       // 合体法术
+    Players unknown5_;                                                // 占位符
+    Players unknown6_;                                                // 占位符
+    Players death_sound_;                                             // 死亡音效
+    Players attack_sound_;                                            // 普攻音效
+    Players weapon_sound_;                                            // 武器音效
+    Players critical_sound_;                                          // 暴击音效
+    Players magic_sound_;                                             // 魔攻音效
+    Players cover_sound_;                                             // 保护队友时音效
+    Players dying_sound_;                                             // 濒死音效
+} PLAYERROLES, *LPPLAYERROLES;
+
+// 法术类型
+typedef enum class MagicType : uint8_t {
+    Normal = 0,        // 普通单体
+    AttackAll = 1,     // 依次攻击
+    AttackWhole = 2,   // 群体攻击
+    AttackField = 3,   // 全屏攻击
+    ApplyToPlayer = 4, // 单体治疗
+    ApplyToParty = 5,  // 群体治疗
+    Trance = 8,        // 觉醒（特殊状态）
+    Summon = 9         // 召唤术
+} MAGIC_TYPE;
+
+// 特殊法术参数
+typedef union MagicSpecial {
+    WORD summon_effect_; // 召唤精灵
+    SHORT layer_offset_; // 仅用于非召唤魔法
+    // 实际图层位置：Pal_Y(pos)+y_offset+magic_layer_offset
+} MAGIC_SPECIAL, *LPMAGIC_SPECIAL;
+
+typedef struct Magic {
+    // 视觉效果相关
+    WORD effect_;            // 效果精灵编号
+    WORD type_;              // 法术类型（对应MagicType）
+    WORD x_offset_;          // 效果的X轴偏移量
+    WORD y_offset_;          // 效果的Y轴偏移量
+    MAGIC_SPECIAL specific_; // 特殊参数（根据魔法类型决定）
+    SHORT speed_;            // 动画播放速度
+    WORD keep_effect_;       // 保持效果？
+    WORD fire_delay_;        // 法术发射阶段的起始帧数
+    WORD effect_times_;      // 效果播放总次数
+    // 屏幕特效相关
+    WORD shake_; // 屏幕震动强度
+    WORD wave_;  // 屏幕波动强度
+
+    WORD unknown_;
+    // 战斗数值相关
+    WORD cost_mp_;     // 法力值消耗
+    WORD base_damage_; // 基础伤害
+    WORD elemental_;   // 元素属性（0->无属性，end->毒属性）
+    SHORT sound_;      // 施法时播放的音效
+} MAGIC, *LPMAGIC;
+
+typedef struct BattleField {
+    WORD screen_wave_;                        // 屏幕波动等级
+    SHORT magic_effect_[NUM_MAGIC_ELEMENTAL]; // 元素魔法的特效状态
+} BATTLEFIELD, *LPBATTLEFIELD;
 
 #endif // pal_ohos_GLOBAL_H
