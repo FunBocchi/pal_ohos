@@ -98,7 +98,7 @@ struct EventObjectRaw {
     WORD script_idle_frame_count_auto_;
 };
 // 使用上述结构体读取二进制文件代码后转换到下方可被使用的类型
-struct EventObject {
+typedef struct EventObject {
     SHORT vanish_time_;
     WORD x_;
     WORD y_;
@@ -115,26 +115,25 @@ struct EventObject {
     WORD sprite_ptr_offset_;
     USHORT sprite_frames_auto_;
     WORD script_idle_frame_count_auto_;
-};
+} EVENTOBJECT, *LPEVENTOBJECT;
 
 // 场景
-struct Scene {
+typedef struct Scene {
     WORD map_num_;            // 地图序号
     WORD script_on_enter_;    // 进入当前地图时触发的脚本
     WORD script_on_teleport_; // 从当前地图传送出去的时候触发的脚本
     WORD event_object_index_; // 当前场景涉及的物品，对应索引+1
-};
+} SCENE, *LPSCENE;
 
 // 对象包括系统字符串、玩家、物品、魔法、敌人和毒药脚本
 
 // 系统字符串及玩家角色
-struct ObjectPlayer {
+typedef struct ObjectPlayer {
     WORD reserved[2];
     // 进入死亡状态时会触发的脚本，后续考虑修改为函数执政
     WORD script_on_friend_death_;
     WORD script_on_dying_;
-};
-typedef ObjectPlayer OBJECT_PLAYER;
+} OBJECT_PLAYER;
 
 enum class ItemFlag {
     Usable = (1 << 0),
@@ -148,18 +147,17 @@ enum class ItemFlag {
 };
 
 // 物品（原版）
-struct ObjectItemDos {
+typedef struct ObjectItemDos {
     WORD bitmap_; // 在BALL.MKF中对应的bitmap序号
     WORD price_;
     WORD script_on_use_;   // 使用时触发的脚本
     WORD script_on_equip_; // 装备时触发的脚本
     WORD script_on_throw_; // 丢弃时触发的脚本
     WORD flags_;
-};
-typedef ObjectItemDos OBJECT_ITEM_DOS;
+} OBJECT_ITEM_DOS;
 
 // 物品（增强）
-struct ObjectItem {
+typedef struct ObjectItem {
     WORD bitmap_; // 在BALL.MKF中对应的bitmap序号
     WORD price_;
     WORD script_on_use_;   // 使用时触发的脚本
@@ -167,8 +165,7 @@ struct ObjectItem {
     WORD script_on_throw_; // 丢弃时触发的脚本
     WORD script_desc_;
     WORD flags_;
-};
-typedef ObjectItem OBJECT_ITEM;
+} OBJECT_ITEM;
 
 enum class MagicFlag {
     UsableOutSideBattle = (1 << 0),
@@ -178,35 +175,32 @@ enum class MagicFlag {
 };
 
 // 法术
-struct ObjectMagicDOS {
+typedef struct ObjectMagicDOS {
     WORD number_;
     WORD reserved1_;
     WORD script_on_success_;
     WORD script_on_use_;
     WORD reserved2_;
     WORD flags_;
-};
-typedef ObjectMagicDOS OBJECT_MAGIC_DOS;
-struct ObjectMagic {
+} OBJECT_MAGIC_DOS;
+typedef struct ObjectMagic {
     WORD number_;
     WORD reserved1_;
     WORD script_on_success_;
     WORD script_on_use_;
     WORD reserved2_;
     WORD flags_;
-};
-typedef ObjectMagicDOS OBJECT_MAGIC;
+} OBJECT_MAGIC;
 
 // 敌人
-struct ObjectEnemy {
+typedef struct ObjectEnemy {
     WORD enemy_id_;
     WORD resistance_to_sorcery_;
     // 脚本
     WORD on_turn_start_;
     WORD on_battle_end_;
     WORD on_ready_;
-};
-typedef ObjectEnemy OBJECT_ENEMY;
+} OBJECT_ENEMY;
 
 // 毒药
 typedef struct ObjectPosion {
@@ -379,5 +373,65 @@ typedef struct BattleField {
     WORD screen_wave_;                        // 屏幕波动等级
     SHORT magic_effect_[NUM_MAGIC_ELEMENTAL]; // 元素魔法的特效状态
 } BATTLEFIELD, *LPBATTLEFIELD;
+
+// 升级时学会的法术
+typedef struct LevelUpMagic {
+    WORD level_; // 达到的等级
+    WORD magic_; // 学会的法术
+} LEVELUPMAGIC, *LPLEVELUPMAGIC;
+
+typedef struct LevelUpMagic_All {
+    LEVELUPMAGIC m[MAX_PLAYER_ROLES];
+} LEVELUPMAGIC_ALL, *LPLEVELUPMAGIC_ALL;
+
+// 用于存储位置的基础坐标类型
+typedef struct PalPos {
+    WORD x;
+    WORD y;
+} PALPOS;
+
+// 敌人位置坐标
+typedef struct EnemyPos {
+    PALPOS pos[MAX_ENEMIES_IN_TEAM][MAX_ENEMIES_IN_TEAM];
+} ENEMYPOS, *LPENEMYPOS;
+
+// 升级所需经验点
+typedef WORD LEVELUPEXP, *LPLEVELUPEXP;
+
+typedef struct GameData {
+    LPEVENTOBJECT lp_event_object_;
+    int n_event_object_;
+
+    SCENE scene_[MAX_SCENES];
+    OBJECT object_[MAX_OBJECTS];
+
+    LPSCRIPTENTRY lp_script_entry_;
+    int n_script_entry_;
+
+    LPSTORE lp_store_;
+    int n_store_;
+
+    LPENEMY lp_enemy_;
+    int n_enemy_;
+
+    LPENEMYTEAM lp_enemy_team_;
+    int n_enemy_team_;
+
+    PLAYERROLES player_roles;
+
+    LPMAGIC lp_magic_;
+    int n_magic_;
+
+    LPBATTLEFIELD lp_battle_field_;
+    int n_battle_field_;
+
+    LPLEVELUPMAGIC_ALL lp_levelup_magic_;
+    int n_levelup_magic_;
+
+    ENEMYPOS enemy_pos_;
+    LEVELUPEXP levelup_exp_[MAX_LEVELS + 1];
+
+    WORD battle_effect_index_[10][2];
+} GAMEDATA, *LPGAMEDATA;
 
 #endif // pal_ohos_GLOBAL_H

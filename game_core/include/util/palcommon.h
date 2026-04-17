@@ -43,4 +43,16 @@
 // 队伍中最大敌人数
 #define MAX_ENEMIES_IN_TEAM 5
 
+// 最大场景数
+#define MAX_SCENES 300
+
+// 最大物品数
+#define MAX_OBJECTS 600
+
+// 最大中毒层数
+#define MAX_POISONS 16
+
+// 最大等级限制
+#define MAX_LEVELS 99
+
 #endif // pal_ohos_PALCOMMON_H
