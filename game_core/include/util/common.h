@@ -38,7 +38,11 @@
 using SHORT = short;
 using WORD = unsigned short;
 using USHORT = unsigned short;
+typedef unsigned int DWORD, *LPDWORD;
+
+typedef unsigned char BYTE, *LPBYTE;
 
 // 以下为额外添加的别名（区别于源项目）
-using LPRAWFILE = RawFile *;//用于替代FILE用以读取文件
+using LPRAWFILE = RawFile *; // 用于替代FILE用以读取文件
+
 #endif // pal_ohos_COMMON_H

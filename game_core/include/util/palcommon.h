@@ -25,8 +25,14 @@
 #ifndef pal_ohos_PALCOMMON_H
 #define pal_ohos_PALCOMMON_H
 
-// 玩家队伍最大成员数
+// 玩家队伍可能最大成员数
 #define MAX_PLAYER_ROLES 6
+
+// 玩家队伍最大可操作角色数
+#define MAX_PLAYABLE_PLAYER_ROLES 5
+
+// 最大库存数
+#define MAX_INVENTORY 256
 
 // 单角色最大装备数
 #define MAX_PLAYER_EQUIPMENTS 6

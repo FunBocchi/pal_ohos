@@ -47,6 +47,8 @@ enum class CharaStatus : uint8_t {
     DualAttack, // 连击
     Default
 };
+// 由于使用了枚举类无法直接使用创建数组，故添加一层转换
+constexpr inline size_t kCharaStatusCount = static_cast<size_t>(CharaStatus::Default);
 
 // 可装备身体部位
 enum class BodyPart : uint8_t {
@@ -446,5 +448,100 @@ typedef struct Files {
     LPRAWFILE RGM;  // 角色头像_RGM.MKF
     LPRAWFILE SSS;  // 脚本数据_SSS.MKF
 } FILES, *LPFILES;
+
+// 玩家队伍成员
+typedef struct Party {
+    WORD player_role_;  // 角色编号-对应角色数据表中的索引
+    SHORT x_, y_;       // 地图坐标
+    WORD frame_;        // 动画帧号-当前播放动画的帧索引
+    WORD image_offset_; // 图像偏移量
+} PARTY, *LPPARTY;
+
+// 队员跟随轨迹，用于让后排队员按前排队友的路径跟随移动
+typedef struct Trail {
+    WORD x_, y_;     // 历史位置坐标
+    WORD direction_; // 移动方向-指示当前位置的角色朝向
+} TRAIL, *LPTRAIL;
+
+typedef struct Experience {
+    WORD exp_; // 当前经验点
+    WORD reserved_;
+    WORD level_; // 当前等级
+    WORD count_;
+} EXPERIENCE, *LPEXPERIENCE;
+
+// 各种属性设定，除角色升级外，可通过多次使用对应技能或动作来提升对应能力值
+typedef struct AllExperience {
+    EXPERIENCE primary_exp_[MAX_PLAYER_ROLES];
+    EXPERIENCE health_exp_[MAX_PLAYER_ROLES];
+    EXPERIENCE magic_exp_[MAX_PLAYER_ROLES];
+    EXPERIENCE attack_exp_[MAX_PLAYER_ROLES];
+    EXPERIENCE magic_power_exp_[MAX_PLAYER_ROLES];
+    EXPERIENCE defence_exp_[MAX_PLAYER_ROLES];
+    EXPERIENCE dexterity_exp_[MAX_PLAYER_ROLES];
+    EXPERIENCE flee_exp_[MAX_PLAYER_ROLES];
+} ALLEXPERIENCE, *LPALLEXPERIENCE;
+
+typedef struct PoisonStatus {
+    WORD poison_id_;
+    WORD poison_script_;
+} POISONSTATUS, *LPPOISONSTATUS;
+
+typedef struct GlobalVars {
+    FILES f;
+    GAMEDATA g;
+
+    int cur_main_menu_item_;
+    int cur_system_menu_item_;
+    int cur_inv_menu_item_;
+    int cur_playing_rng_;
+    BYTE current_save_slot_;
+    bool in_main_game_;
+    bool entering_scene_;
+    bool need_to_fade_in_;
+    bool in_battle_;
+    bool auto_battle_;
+
+#ifndef PAL_CLASSIC
+    BYTE battle_speed_;
+#endif
+    WORD last_unequipped_item_;
+
+    PLAYERROLES equipment_effect_[MAX_PLAYER_EQUIPMENTS + 1];
+    // 使用array替代源项目创建数组的方案，更符合C++规范
+    std::array<std::array<WORD, kCharaStatusCount>, MAX_PLAYER_ROLES> player_status_;
+
+    PALPOS viewport_;
+    PALPOS partyoffset_;
+    WORD layer_;
+    WORD max_party_member_index_;
+    std::array<PARTY, MAX_PLAYABLE_PLAYER_ROLES> party_;
+    std::array<TRAIL, MAX_PLAYABLE_PLAYER_ROLES> trail_;
+    WORD party_direction_;
+    WORD num_scene_;
+    WORD num_palette_;
+    bool night_palette_;
+    WORD num_music_;
+    WORD num_battle_music_;
+    WORD num_battle_field_;
+    WORD collect_value_;
+    WORD screen_wave_;
+    SHORT wave_progression_;
+    WORD chase_range_;
+    WORD chasespeed_change_cycles_;
+    USHORT follower_;
+
+    DWORD cash_;
+
+    ALLEXPERIENCE exp_;
+    std::array<std::array<POISONSTATUS, MAX_PLAYABLE_PLAYER_ROLES>, MAX_POISONS> poison_status_;
+    std::array<INVENTORY, MAX_INVENTORY> inventory_;
+    /**
+     * 待ui类补全后不全该处
+     * LPOBJECTDESC lpObjectDesc;
+     **/
+
+    DWORD frame_num_;
+} GLOBALVARS, *LPGLOBALVARS;
 
 #endif // pal_ohos_GLOBAL_H
