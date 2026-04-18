@@ -7,7 +7,7 @@
 #ifndef pal_ohos_ENEMY_POS_H
 #define pal_ohos_ENEMY_POS_H
 
-#include "structures/pal_pos.h"
+#include "src/base/pal_pos.h"
 #include "util/palcommon.h"
 
 // 敌人位置坐标

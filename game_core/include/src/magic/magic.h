@@ -8,7 +8,7 @@
 #define pal_ohos_MAGIC_H
 
 #include "util/common.h"
-#include "structures/magic_special.h"
+#include "magic_special.h"
 
 typedef struct Magic {
     // 视觉效果相关

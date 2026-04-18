@@ -7,11 +7,11 @@
 #ifndef pal_ohos_OBJECT_H
 #define pal_ohos_OBJECT_H
 
-#include "structures/object_enemy.h"
-#include "structures/object_item.h"
-#include "structures/object_magic.h"
-#include "structures/object_player.h"
-#include "structures/object_poison.h"
+#include "object_enemy.h"
+#include "object_item.h"
+#include "object_magic.h"
+#include "object_player.h"
+#include "object_poison.h"
 #include "util/common.h"
 
 typedef union ObjectDos {
