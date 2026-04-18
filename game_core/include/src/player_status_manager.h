@@ -13,12 +13,17 @@
 
 class PlayerStatusManager {
 public:
-    static bool setStatus(uint16_t player_role, uint16_t status_id, uint16_t num_round);
+    //状态相关
+    static bool setStatus(uint16_t player_role, uint16_t status_id, uint16_t num_round);//对角色添加状态
     static void removeStatus(uint16_t player_role, uint16_t status_id);
-    static void clearAllStatus();
-    static void addPoison(uint16_t player_role, uint16_t poison_id);
-    static void curePoison(uint16_t player_role, uint16_t poison_id);
-    bool isPoisoned(uint16_t player_role, uint16_t min_level) const;
+    static void clearAllPlayerStatus();
+    // 毒药相关
+    static void addPoisonForPlayer(uint16_t player_role, uint16_t poison_id);
+    static void curePoisonByKind(uint16_t player_role, uint16_t poison_id);
+    static void curePoisonByLevel(uint16_t player_role, uint16_t max_level);
+    
+    static bool isPlayerPoisonedByKind(uint16_t player_role,uint16_t poison_id);
+    static bool isPlayerPoisonedByLevel(uint16_t player_role,uint16_t min_level);
 };
 
 #endif // pal_ohos_PLAYER_STATUS_MANAGER_H

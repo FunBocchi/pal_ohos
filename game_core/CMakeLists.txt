@@ -7,18 +7,18 @@ set(
 )
 
 # 添加各个子模块
-add_subdirectory(bridge)
+#add_subdirectory(bridge)
 # add_subdirectory(engine)
-# add_subdirectory(src)
+ add_subdirectory(src)
 # add_subdirectory(util)
 
 # 组装成完整的静态库
 add_library(
   game_core
   STATIC
-  $<TARGET_OBJECTS:game_core_bridge>
+#  $<TARGET_OBJECTS:game_core_bridge>
 #   $<TARGET_OBJECTS:game_core_engine>
-#   $<TARGET_OBJECTS:game_core_src>
+   $<TARGET_OBJECTS:game_core_src>
 #   $<TARGET_OBJECTS:game_core_util>
 )
 

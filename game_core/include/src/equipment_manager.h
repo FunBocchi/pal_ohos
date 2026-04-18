@@ -13,7 +13,7 @@
 class EquipmentManager {
 public:
     void updateAllEquipments();
-    void removeEquipmentEffect(uint16_t player_role, uint16_t equip_part);
+    void removeEquipmentEffect(uint16_t player_role, uint16_t equip_part); // 移除某处的装备效果
 };
 
 #endif // pal_ohos_EQUIPMENT_MANAGER_H

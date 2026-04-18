@@ -13,9 +13,9 @@
 
 class SaveGameManager {
 public:
-    void initGameData(int save_slot);
-    void reloadInNextTick(int save_slot);
-    void saveGame(int save_slot, uint16_t saved_times);
+    void saveGame(int save_slot, uint16_t saved_times); // 存档
+    void initGameData(int save_slot);                   // 读取
+    void reloadInNextTick(int save_slot);               // 在下一帧重加载
 
 private:
     enum class SaveFormat { DOS, WIN95 };

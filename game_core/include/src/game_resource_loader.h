@@ -7,18 +7,21 @@
 #ifndef pal_ohos_GAME_RESOURCE_LOADER_H
 #define pal_ohos_GAME_RESOURCE_LOADER_H
 
-#include "global.h"
+#include "src/base/global.h"
 
 // 负责打开MKF文件、分配内存、加在静态游戏数据等功能，即负责实现资源初始化
+//开始游戏时调用initialize()，获取游戏资源数据
+//退出游戏时调用shutdown()，释放资源
 class GameResourceLoader {
 public:
+    //单例
     static GameResourceLoader *getInstance();
-    void initialize();
-    void free();
+    void initialize();//初始化
+    void shutdown();//关闭
 
 private:
-    void readGameData();
-    void initGameData();
+    void readGameData();//读取资源文件
+    void freeGameData();//释放资源文件
     LPGLOBALVARS globals_;
 };
 

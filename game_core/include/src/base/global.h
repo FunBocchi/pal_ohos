@@ -58,8 +58,8 @@ typedef struct GlobalVars {
 #endif
     WORD last_unequipped_item_;
 
-    PLAYERROLES equipment_effect_[MAX_PLAYER_EQUIPMENTS + 1];
     // 使用array替代源项目创建数组的方案，更符合C++规范
+    std::array<PLAYERROLES, MAX_PLAYER_EQUIPMENTS + 1> equipment_effect_;
     std::array<std::array<WORD, kCharaStatusCount>, MAX_PLAYER_ROLES> player_status_;
 
     PALPOS viewport_;
