@@ -39,3 +39,9 @@ target_include_directories(
   PUBLIC
   ${GAME_CORE_ROOT}/include
 )
+
+target_link_libraries(
+  game_core
+  PUBLIC
+  librawfile.z.so
+)
