@@ -17,7 +17,7 @@ public:
     // 单例
     static GameResourceLoader *getInstance();
     bool initGlobals(); // 初始化
-    void freeGlobals();  // 关闭
+    void freeGlobals(); // 关闭
 
     GameResourceLoader() = default;
 
@@ -30,8 +30,8 @@ public:
 private:
     void readGlobalGameData(); // 从文件中读取游戏数据
     void initGlobalGameData(); // 初始化游戏数据
-    void loadDefaultGame();//读取默认游戏数据
-    GlobalVars* globals_;
+    void loadDefaultGame();    // 读取默认游戏数据
+    GlobalVars *globals_;
 };
 
 #endif // pal_ohos_GAME_RESOURCE_LOADER_H
