@@ -6,6 +6,7 @@
 
 #include "src/game_resource_loader.h"
 #include "util/util.h"
+#include <cstdint>
 
 GameResourceLoader *GameResourceLoader::getInstance() {
     static GameResourceLoader instance;
@@ -79,3 +80,20 @@ void GameResourceLoader::freeGlobals() {
     free(globals_->g.lp_battle_field_);
     free(globals_->g.lp_levelup_magic_);
 }
+
+/**
+ * 从文件中读取游戏数据
+ */
+void GameResourceLoader::readGlobalGameData() { const GameData *p = &globals_->g;}
+
+/**
+ * 初始化游戏数据
+ */
+void GameResourceLoader::initGlobalGameData() {  }
+
+/**
+ * 加载默认游戏数据
+ */
+void GameResourceLoader::loadDefaultGame() { GameData*p=&globals_->g;uint32_t i;
+
+globals_->entering_scene_=true;}
