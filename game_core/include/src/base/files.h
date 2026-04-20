@@ -7,19 +7,19 @@
 #ifndef pal_ohos_FILES_H
 #define pal_ohos_FILES_H
 
-#include "util/common.h"
+#include <rawfile/raw_file.h>
 
 // 用于存储游戏资源文件，在游戏运行期间会保持打开直至退出时被关闭
 // 使用RawFile类型代替原版FILE，以适配鸿蒙系统NDK
-typedef struct Files {
-    LPRAWFILE FBP;  // 战斗背景_FBP.MKF
-    LPRAWFILE MGO;  // 场景精灵图_MGO.MKF
-    LPRAWFILE BALL; // 物品位图_BALL.MKF
-    LPRAWFILE DATA; // 综合数据文件_DATA.MKF
-    LPRAWFILE F;    // 战斗精灵图_F.MKF
-    LPRAWFILE FIRE; // 特效精灵图_FIRE.MKF
-    LPRAWFILE RGM;  // 角色头像_RGM.MKF
-    LPRAWFILE SSS;  // 脚本数据_SSS.MKF
-} FILES, *LPFILES;
+struct Files {
+    RawFile* FBP;  // 战斗背景_FBP.MKF
+    RawFile* MGO;  // 场景精灵图_MGO.MKF
+    RawFile* BALL; // 物品位图_BALL.MKF
+    RawFile* DATA; // 综合数据文件_DATA.MKF
+    RawFile* F;    // 战斗精灵图_F.MKF
+    RawFile* FIRE; // 特效精灵图_FIRE.MKF
+    RawFile* RGM;  // 角色头像_RGM.MKF
+    RawFile* SSS;  // 脚本数据_SSS.MKF
+};
 
 #endif //pal_ohos_FILES_H

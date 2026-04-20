@@ -21,44 +21,45 @@
 #include "src/player/player_roles.h"
 #include "util/common.h"
 #include "util/palcommon.h"
+#include <cstdint>
 
 // 升级所需经验点
-typedef WORD LEVELUPEXP, *LPLEVELUPEXP;
+typedef uint16_t LEVELUPEXP, *LPLEVELUPEXP;
 
-typedef struct GameData {
-    LPEVENTOBJECT lp_event_object_;
+struct GameData {
+    EventObject* lp_event_object_;
     int n_event_object_;
 
-    SCENE scene_[MAX_SCENES];
-    OBJECT object_[MAX_OBJECTS];
+    Scene scene_[MAX_SCENES];
+   Object object_[MAX_OBJECTS];
 
-    LPSCRIPTENTRY lp_script_entry_;
+    ScriptEntry* lp_script_entry_;
     int n_script_entry_;
 
-    LPSTORE lp_store_;
+    Store* lp_store_;
     int n_store_;
 
-    LPENEMY lp_enemy_;
+    Enemy* lp_enemy_;
     int n_enemy_;
 
-    LPENEMYTEAM lp_enemy_team_;
+    EnemyTeam* lp_enemy_team_;
     int n_enemy_team_;
 
-    PLAYERROLES player_roles;
+    PlayerRoles player_roles;
 
-    LPMAGIC lp_magic_;
+    Magic* lp_magic_;
     int n_magic_;
 
-    LPBATTLEFIELD lp_battle_field_;
+    BattleField* lp_battle_field_;
     int n_battle_field_;
 
-    LPLEVELUPMAGIC_ALL lp_levelup_magic_;
+    LevelUpMagic_All* lp_levelup_magic_;
     int n_levelup_magic_;
 
-    ENEMYPOS enemy_pos_;
+    EnemyPos enemy_pos_;
     LEVELUPEXP levelup_exp_[MAX_LEVELS + 1];
 
-    WORD battle_effect_index_[10][2];
-} GAMEDATA, *LPGAMEDATA;
+    uint16_t     battle_effect_index_[10][2];
+};
 
 #endif // pal_ohos_GAME_DATA_H

@@ -9,28 +9,29 @@
 
 #include "util/common.h"
 #include "magic_special.h"
+#include <cstdint>
 
-typedef struct Magic {
+struct Magic {
     // 视觉效果相关
-    WORD effect_;            // 效果精灵编号
-    WORD type_;              // 法术类型（对应MagicType）
-    WORD x_offset_;          // 效果的X轴偏移量
-    WORD y_offset_;          // 效果的Y轴偏移量
-    MAGIC_SPECIAL specific_; // 特殊参数（根据魔法类型决定）
-    SHORT speed_;            // 动画播放速度
-    WORD keep_effect_;       // 保持效果？
-    WORD fire_delay_;        // 法术发射阶段的起始帧数
-    WORD effect_times_;      // 效果播放总次数
+    uint16_t effect_;            // 效果精灵编号
+    uint16_t type_;              // 法术类型（对应MagicType）
+    uint16_t x_offset_;          // 效果的X轴偏移量
+    uint16_t y_offset_;          // 效果的Y轴偏移量
+    MagicSpecial specific_; // 特殊参数（根据魔法类型决定）
+    int16_t speed_;            // 动画播放速度
+    uint16_t keep_effect_;       // 保持效果？
+    uint16_t fire_delay_;        // 法术发射阶段的起始帧数
+    uint16_t effect_times_;      // 效果播放总次数
     // 屏幕特效相关
-    WORD shake_; // 屏幕震动强度
-    WORD wave_;  // 屏幕波动强度
+    uint16_t shake_; // 屏幕震动强度
+    uint16_t wave_;  // 屏幕波动强度
 
-    WORD unknown_;
+    uint16_t unknown_;
     // 战斗数值相关
-    WORD cost_mp_;     // 法力值消耗
-    WORD base_damage_; // 基础伤害
-    WORD elemental_;   // 元素属性（0->无属性，end->毒属性）
-    SHORT sound_;      // 施法时播放的音效
-} MAGIC, *LPMAGIC;
+    uint16_t cost_mp_;     // 法力值消耗
+    uint16_t base_damage_; // 基础伤害
+    uint16_t elemental_;   // 元素属性（0->无属性，end->毒属性）
+    int16_t sound_;      // 施法时播放的音效
+};
 
 #endif //pal_ohos_MAGIC_H

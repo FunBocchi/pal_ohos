@@ -8,12 +8,13 @@
 #define pal_ohos_INVENTORY_H
 
 #include "util/common.h"
+#include <cstdint>
 
 // 库存
-typedef struct Inventory {
-    WORD item_;
-    USHORT amount_;
-    USHORT amount_in_use_;
-} INVENTORY, *LPINVENTORY;
+struct Inventory {
+    uint16_t item_;
+    uint16_t amount_;
+    uint16_t amount_in_use_;
+};
 
 #endif // pal_ohos_INVENTORY_H

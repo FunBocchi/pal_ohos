@@ -8,9 +8,10 @@
 #define pal_ohos_OBJECT_STATE_H
 
 #include "util/common.h"
+#include <cstdint>
 
 // 事件对象的状态及触发模式，由EventObject调用
-enum class ObjectState : SHORT {
+enum class ObjectState : int16_t {
     Hidden = 0, // 隐藏
     Normal = 1,
     Blocker = 2

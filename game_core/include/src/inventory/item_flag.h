@@ -8,7 +8,8 @@
 #define pal_ohos_ITEM_FLAG_H
 
 #include "util/common.h"
-typedef enum class ItemFlag : WORD {
+#include <cstdint>
+enum class ItemFlag : uint16_t {
     Usable = (1 << 0),
     Equipable = (1 << 1),
     Throwable = (1 << 2),
@@ -16,6 +17,6 @@ typedef enum class ItemFlag : WORD {
     ApplyToAll = (1 << 4),
     Sellable = (1 << 5),
     EquipableByPlayerRole_First = (1 << 6)
-} ITEMFLAG;
+};
 
 #endif // pal_ohos_ITEM_FLAG_H

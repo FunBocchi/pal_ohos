@@ -8,24 +8,25 @@
 #define pal_ohos_OBJECT_MAGIC_H
 #include "src/magic/magic_flag.h"
 #include "util/common.h"
+#include <cstdint>
 // 法术
-typedef struct ObjectMagicDOS {
-    WORD number_;
-    WORD reserved1_;
-    WORD script_on_success_;
-    WORD script_on_use_;
-    WORD reserved2_;
-    MAGICFLAG flags_;
-} OBJECT_MAGIC_DOS;
+struct ObjectMagicDOS {
+    uint16_t number_;
+    uint16_t reserved1_;
+    uint16_t script_on_success_;
+    uint16_t script_on_use_;
+    uint16_t reserved2_;
+    MagicFlag flags_;
+};
 
-typedef struct ObjectMagic {
-    WORD number_;
-    WORD reserved1_;
-    WORD script_on_success_;
-    WORD script_on_use_;
-    WORD script_desc_;
-    WORD reserved2_;
-    MAGICFLAG flags_;
-} OBJECT_MAGIC;
+struct ObjectMagic {
+    uint16_t number_;
+    uint16_t reserved1_;
+    uint16_t script_on_success_;
+    uint16_t script_on_use_;
+    uint16_t script_desc_;
+    uint16_t reserved2_;
+    MagicFlag flags_;
+};
 
 #endif // pal_ohos_OBJECT_MAGIC_H

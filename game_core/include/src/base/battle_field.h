@@ -9,10 +9,11 @@
 
 #include "util/common.h"
 #include "util/palcommon.h"
+#include <cstdint>
 
-typedef struct BattleField {
-    WORD screen_wave_;                        // 屏幕波动等级
-    SHORT magic_effect_[NUM_MAGIC_ELEMENTAL]; // 元素魔法的特效状态
-} BATTLEFIELD, *LPBATTLEFIELD;
+struct BattleField {
+    uint16_t screen_wave_;                        // 屏幕波动等级
+    int16_t magic_effect_[NUM_MAGIC_ELEMENTAL]; // 元素魔法的特效状态
+};
 
 #endif // pal_ohos_BATTLE_FIELD_H

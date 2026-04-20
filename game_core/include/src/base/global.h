@@ -37,16 +37,17 @@
 #include "src/player/trail.h"
 #include "util/common.h"
 #include "util/palcommon.h"
+#include <cstdint>
 
-typedef struct GlobalVars {
-    FILES f;
-    GAMEDATA g;
+struct GlobalVars {
+    Files f;
+    GameData g;
 
-    int cur_main_menu_item_;
-    int cur_system_menu_item_;
-    int cur_inv_menu_item_;
-    int cur_playing_rng_;
-    BYTE current_save_slot_;
+    int32_t cur_main_menu_item_;
+    int32_t cur_system_menu_item_;
+    int32_t cur_inv_menu_item_;
+    int32_t cur_playing_rng_;
+    uint8_t current_save_slot_;
     bool in_main_game_;
     bool entering_scene_;
     bool need_to_fade_in_;
@@ -54,45 +55,45 @@ typedef struct GlobalVars {
     bool auto_battle_;
 
 #ifndef PAL_CLASSIC
-    BYTE battle_speed_;
+    uint8_t battle_speed_;
 #endif
-    WORD last_unequipped_item_;
+    uint16_t last_unequipped_item_;
 
     // 使用array替代源项目创建数组的方案，更符合C++规范
-    std::array<PLAYERROLES, MAX_PLAYER_EQUIPMENTS + 1> equipment_effect_;
-    std::array<std::array<WORD, kCharaStatusCount>, MAX_PLAYER_ROLES> player_status_;
+    std::array<PlayerRoles, MAX_PLAYER_EQUIPMENTS + 1> equipment_effect_;
+    std::array<std::array<uint16_t, kCharaStatusCount>, MAX_PLAYER_ROLES> player_status_;
 
-    PALPOS viewport_;
-    PALPOS partyoffset_;
-    WORD layer_;
-    WORD max_party_member_index_;
-    std::array<PARTY, MAX_PLAYABLE_PLAYER_ROLES> party_;
-    std::array<TRAIL, MAX_PLAYABLE_PLAYER_ROLES> trail_;
-    WORD party_direction_;
-    WORD num_scene_;
-    WORD num_palette_;
+    PalPos viewport_;
+    PalPos party_offset_;
+    uint16_t layer_;
+    uint16_t max_party_member_index_;
+    std::array<Party, MAX_PLAYABLE_PLAYER_ROLES> party_;
+    std::array<Trail, MAX_PLAYABLE_PLAYER_ROLES> trail_;
+    uint16_t party_direction_;
+    uint16_t num_scene_;
+    uint16_t num_palette_;
     bool night_palette_;
-    WORD num_music_;
-    WORD num_battle_music_;
-    WORD num_battle_field_;
-    WORD collect_value_;
-    WORD screen_wave_;
-    SHORT wave_progression_;
-    WORD chase_range_;
-    WORD chasespeed_change_cycles_;
-    USHORT follower_;
+    uint16_t num_music_;
+    uint16_t num_battle_music_;
+    uint16_t num_battle_field_;
+    uint16_t collect_value_;
+    uint16_t screen_wave_;
+    int16_t wave_progression_;
+    uint16_t chase_range_;
+    uint16_t chasespeed_change_cycles_;
+    uint16_t follower_;
 
-    DWORD cash_;
+    uint32_t cash_;
 
-    ALLEXPERIENCE exp_;
-    std::array<std::array<POISONSTATUS, MAX_PLAYABLE_PLAYER_ROLES>, MAX_POISONS> poison_status_;
-    std::array<INVENTORY, MAX_INVENTORY> inventory_;
+    AllExperience exp_;
+    std::array<std::array<PoisonStatus, MAX_PLAYABLE_PLAYER_ROLES>, MAX_POISONS> poison_status_;
+    std::array<Inventory, MAX_INVENTORY> inventory_;
     /**
      * 待ui类补全后补全该处
      * LPOBJECTDESC lpObjectDesc;
      **/
 
-    DWORD frame_num_;
-} GLOBALVARS, *LPGLOBALVARS;
+    uint32_t frame_num_;
+};
 
 #endif // pal_ohos_GLOBAL_H

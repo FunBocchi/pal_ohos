@@ -8,11 +8,12 @@
 #define pal_ohos_PAL_POS_H
 
 #include "util/common.h"
+#include <cstdint>
 
 // 用于存储位置的基础坐标类型
-typedef struct PalPos {
-    WORD x;
-    WORD y;
-} PALPOS;
+struct PalPos {
+    uint16_t x;
+    uint16_t y;
+};
 
 #endif // pal_ohos_PAL_POS_H

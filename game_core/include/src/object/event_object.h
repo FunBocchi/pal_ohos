@@ -7,6 +7,7 @@
 #ifndef pal_ohos_EVENT_OBJECT_H
 #define pal_ohos_EVENT_OBJECT_H
 
+#include "src/object/object_state.h"
 #include "util/common.h"
 #include "src/object/triggle_mode.h"
 #include <cstdint>
@@ -40,7 +41,7 @@ struct EventObject {
     int16_t layer_;
     uint16_t trigger_script_;
     uint16_t auto_script_;
-    int16_t state_;       // 当前元素所处状态，对应SHORT类型
+    ObjectState state_;       // 当前元素所处状态，对应SHORT类型
     TriggerMode trigger_mode_; // 触发方式，对应WORD类型，使用对应的枚举类型替代
     uint16_t sprite_num_;
     uint16_t sprite_frames_;

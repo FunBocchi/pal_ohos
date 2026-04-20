@@ -13,23 +13,24 @@
 #include "object_player.h"
 #include "object_poison.h"
 #include "util/common.h"
+#include <cstdint>
 
-typedef union ObjectDos {
-    WORD data[6];
-    OBJECT_PLAYER player_;
-    OBJECT_ITEM_DOS item_;
-    OBJECT_MAGIC_DOS magic_;
-    OBJECT_ENEMY enemy_;
-    OBJECT_POISON poison_;
-} OBJECT_DOS, *LPOBJECT_DOS;
+union ObjectDos {
+    uint16_t data[6];
+    ObjectPlayer player_;
+    ObjectItemDos item_;
+    ObjectMagicDOS magic_;
+    ObjectEnemy enemy_;
+    ObjectPoison poison_;
+};
 
-typedef union Object {
-    WORD data[7];
-    OBJECT_PLAYER player_;
-    OBJECT_ITEM item_;
-    OBJECT_MAGIC magic_;
-    OBJECT_ENEMY enemy_;
-    OBJECT_POISON poison_;
-} OBJECT, *LPOBJECT;
+union Object {
+    uint16_t data[7];
+    ObjectPlayer player_;
+    ObjectItem item_;
+    ObjectMagic magic_;
+    ObjectEnemy enemy_;
+    ObjectPoison poison_;
+};
 
 #endif // pal_ohos_OBJECT_H

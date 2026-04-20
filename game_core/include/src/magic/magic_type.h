@@ -8,9 +8,10 @@
 #define pal_ohos_MAGIC_TYPE_H
 
 #include "util/common.h"
+#include <cstdint>
 
 // 法术类型
-typedef enum class MagicType : WORD {
+enum class MagicType : int16_t {
     Normal = 0,        // 普通单体
     AttackAll = 1,     // 依次攻击
     AttackWhole = 2,   // 群体攻击
@@ -19,6 +20,6 @@ typedef enum class MagicType : WORD {
     ApplyToParty = 5,  // 群体治疗
     Trance = 8,        // 觉醒（特殊状态）
     Summon = 9         // 召唤术
-} MAGIC_TYPE;
+};
 
 #endif // pal_ohos_MAGIC_TYPE_H

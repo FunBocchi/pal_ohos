@@ -8,13 +8,14 @@
 #define pal_ohos_SCENE_H
 
 #include "util/common.h"
+#include <cstdint>
 
 // 场景
-typedef struct Scene {
-    WORD map_num_;            // 地图序号
-    WORD script_on_enter_;    // 进入当前地图时触发的脚本
-    WORD script_on_teleport_; // 从当前地图传送出去的时候触发的脚本
-    WORD event_object_index_; // 当前场景涉及的物品，对应索引+1
-} SCENE, *LPSCENE;
+struct Scene {
+    uint16_t map_num_;            // 地图序号
+    uint16_t script_on_enter_;    // 进入当前地图时触发的脚本
+    uint16_t script_on_teleport_; // 从当前地图传送出去的时候触发的脚本
+    uint16_t event_object_index_; // 当前场景涉及的物品，对应索引+1
+};
 
 #endif // pal_ohos_SCENE_H

@@ -11,8 +11,8 @@
 #include "util/palcommon.h"
 
 // 敌人位置坐标
-typedef struct EnemyPos {
-    PALPOS pos[MAX_ENEMIES_IN_TEAM][MAX_ENEMIES_IN_TEAM];
-} ENEMYPOS, *LPENEMYPOS;
+struct EnemyPos {
+    PalPos pos[MAX_ENEMIES_IN_TEAM][MAX_ENEMIES_IN_TEAM];
+};
 
 #endif // pal_ohos_ENEMY_POS_H

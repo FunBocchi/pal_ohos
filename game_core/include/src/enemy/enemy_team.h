@@ -9,9 +9,10 @@
 
 #include "util/common.h"
 #include "util/palcommon.h"
+#include <cstdint>
 
-typedef struct EnemyTeam {
-    WORD rgw_enemy_[MAX_ENEMIES_IN_TEAM];
-} ENEMYTEAM, *LPENEMYTEAM;
+struct EnemyTeam {
+    uint16_t rgw_enemy_[MAX_ENEMIES_IN_TEAM];
+};
 
 #endif //pal_ohos_ENEMY_TEAM_H

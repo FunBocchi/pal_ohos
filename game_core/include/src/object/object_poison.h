@@ -8,14 +8,15 @@
 #define pal_ohos_OBJECT_POISON_H
 
 #include "util/common.h"
+#include <cstdint>
 
 // 毒药
-typedef struct ObjectPoison {
-    WORD level_;
-    WORD color_;
-    WORD player_script_;
-    WORD reserved_;
-    WORD enemy_script_;
-} OBJECT_POISON;
+struct ObjectPoison {
+    uint16_t level_;
+    uint16_t color_;
+    uint16_t player_script_;
+    uint16_t reserved_;
+    uint16_t enemy_script_;
+};
 
 #endif // pal_ohos_OBJECT_POISON_H

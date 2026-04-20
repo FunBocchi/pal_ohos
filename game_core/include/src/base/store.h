@@ -9,9 +9,10 @@
 
 #include "util/common.h"
 #include "util/palcommon.h"
+#include <cstdint>
 
-typedef struct Store {
-    WORD rgw_items_[MAX_STORE_ITEM];
-} STORE, *LPSTORE;
+struct Store {
+    uint16_t rgw_items_[MAX_STORE_ITEM];
+};
 
 #endif // pal_ohos_STORE_H

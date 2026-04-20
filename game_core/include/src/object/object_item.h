@@ -10,24 +10,24 @@
 #include "util/common.h"
 
 // 物品（原版）
-typedef struct ObjectItemDos {
-    WORD bitmap_; // 在BALL.MKF中对应的bitmap序号
-    WORD price_;
-    WORD script_on_use_;   // 使用时触发的脚本
-    WORD script_on_equip_; // 装备时触发的脚本
-    WORD script_on_throw_; // 丢弃时触发的脚本
-    WORD flags_;
-} OBJECT_ITEM_DOS;
+struct ObjectItemDos {
+    uint16_t bitmap_; // 在BALL.MKF中对应的bitmap序号
+    uint16_t price_;
+    uint16_t script_on_use_;   // 使用时触发的脚本
+    uint16_t script_on_equip_; // 装备时触发的脚本
+    uint16_t script_on_throw_; // 丢弃时触发的脚本
+    uint16_t flags_;
+};
 
 // 物品（增强）
-typedef struct ObjectItem {
-    WORD bitmap_; // 在BALL.MKF中对应的bitmap序号
-    WORD price_;
-    WORD script_on_use_;   // 使用时触发的脚本
-    WORD script_on_equip_; // 装备时触发的脚本
-    WORD script_on_throw_; // 丢弃时触发的脚本
-    WORD script_desc_;
-    WORD flags_;
-} OBJECT_ITEM;
+struct ObjectItem {
+    uint16_t bitmap_; // 在BALL.MKF中对应的bitmap序号
+    uint16_t price_;
+    uint16_t script_on_use_;   // 使用时触发的脚本
+    uint16_t script_on_equip_; // 装备时触发的脚本
+    uint16_t script_on_throw_; // 丢弃时触发的脚本
+    uint16_t script_desc_;
+    uint16_t flags_;
+};
 
 #endif // pal_ohos_OBJECT_ITEM_H

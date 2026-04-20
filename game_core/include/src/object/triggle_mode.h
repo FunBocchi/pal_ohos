@@ -9,7 +9,7 @@
 #include "util/common.h"
 
 // 地图元素的触发方式
-typedef enum class TriggerMode {
+enum class TriggerMode {
     None = 0,
     SearchNear,
     SearchNormal,
@@ -19,6 +19,6 @@ typedef enum class TriggerMode {
     TouchFar,
     TouchFurther,
     TouchFurthest
-} TRIGGERMODE;
+};
 
 #endif // pal_ohos_TRIGGLE_MODE_H

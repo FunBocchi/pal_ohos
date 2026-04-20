@@ -9,15 +9,16 @@
 
 #include "util/common.h"
 #include "util/palcommon.h"
+#include <cstdint>
 
 // 升级时学会的法术
-typedef struct LevelUpMagic {
-    WORD level_; // 达到的等级
-    WORD magic_; // 学会的法术
-} LEVELUPMAGIC, *LPLEVELUPMAGIC;
+struct LevelUpMagic {
+    uint16_t level_; // 达到的等级
+    uint16_t magic_; // 学会的法术
+};
 
-typedef struct LevelUpMagic_All {
-    LEVELUPMAGIC m[MAX_PLAYER_ROLES];
-} LEVELUPMAGIC_ALL, *LPLEVELUPMAGIC_ALL;
+struct LevelUpMagic_All {
+    LevelUpMagic m[MAX_PLAYER_ROLES];
+};
 
 #endif // pal_ohos_LEVEL_UP_MAGIC_H

@@ -8,10 +8,11 @@
 #define pal_ohos_SCRIPT_ENTRY_H
 
 #include "util/common.h"
+#include <cstdint>
 
-typedef struct ScriptEntry {
-    WORD operation_;
-    WORD rgw_operand_[3];
-} SCRIPTENTRY, *LPSCRIPTENTRY;
+struct ScriptEntry {
+    uint16_t operation_;
+    uint16_t rgw_operand_[3];
+};
 
 #endif // pal_ohos_SCRIPT_ENTRY_H

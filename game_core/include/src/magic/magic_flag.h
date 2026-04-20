@@ -7,12 +7,14 @@
 #ifndef pal_ohos_MAGIC_FLAG_H
 #define pal_ohos_MAGIC_FLAG_H
 
-// 法术特性标签
-typedef enum class MagicFlag {
+/**
+ * 法术特性标签
+ */
+enum class MagicFlag {
     UsableOutSideBattle = (1 << 0),
     UsableInBattle = (1 << 1),
     UsableToEnemy = (1 << 3),
     ApplyToAll = (1 << 4)
-} MAGICFLAG;
+};
 
 #endif // pal_ohos_MAGIC_FLAG_H

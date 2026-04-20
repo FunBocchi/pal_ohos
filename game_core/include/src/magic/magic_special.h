@@ -8,12 +8,13 @@
 #define pal_ohos_MAGIC_SPECIAL_H
 
 #include "util/common.h"
+#include <cstdint>
 
 // 特殊法术参数
-typedef union MagicSpecial {
-    WORD summon_effect_; // 召唤精灵
-    SHORT layer_offset_; // 仅用于非召唤魔法
+union MagicSpecial {
+    uint16_t summon_effect_; // 召唤精灵
+    int16_t layer_offset_; // 仅用于非召唤魔法
     // 实际图层位置：Pal_Y(pos)+y_offset+magic_layer_offset
-} MAGIC_SPECIAL, *LPMAGIC_SPECIAL;
+};
 
 #endif //pal_ohos_MAGIC_SPECIAL_H

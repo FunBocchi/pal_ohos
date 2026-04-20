@@ -8,15 +8,16 @@
 #define pal_ohos_OBJECT_ENEMY_H
 
 #include "util/common.h"
+#include <cstdint>
 
 // 敌人
-typedef struct ObjectEnemy {
-    WORD enemy_id_;
-    WORD resistance_to_sorcery_;
+struct ObjectEnemy {
+    uint16_t enemy_id_;
+    uint16_t resistance_to_sorcery_;
     // 脚本
-    WORD on_turn_start_;
-    WORD on_battle_end_;
-    WORD on_ready_;
-} OBJECT_ENEMY;
+    uint16_t on_turn_start_;
+    uint16_t on_battle_end_;
+    uint16_t on_ready_;
+};
 
 #endif // pal_ohos_OBJECT_ENEMY_H
