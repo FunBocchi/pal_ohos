@@ -7,9 +7,9 @@
 #ifndef pal_ohos_EVENT_OBJECT_H
 #define pal_ohos_EVENT_OBJECT_H
 
-#include "src/object/object_state.h"
+#include "../enums/object_state.h"
 #include "util/common.h"
-#include "src/object/triggle_mode.h"
+#include "../enums/triggle_mode.h"
 #include <cstdint>
 
 // 对象包括系统字符串、玩家、物品、魔法、敌人和毒药脚本

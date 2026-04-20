@@ -6,7 +6,7 @@
 
 #ifndef pal_ohos_OBJECT_MAGIC_H
 #define pal_ohos_OBJECT_MAGIC_H
-#include "src/magic/magic_flag.h"
+#include "../enums/magic_flag.h"
 #include "util/common.h"
 #include <cstdint>
 // 法术

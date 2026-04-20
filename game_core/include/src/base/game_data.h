@@ -10,7 +10,7 @@
 #include "src/base/battle_field.h"
 #include "src/base/scene.h"
 #include "src/base/script_entry.h"
-#include "src/base/store.h"
+#include "../inventory/store.h"
 #include "src/enemy/enemy.h"
 #include "src/enemy/enemy_pos.h"
 #include "src/enemy/enemy_team.h"

@@ -30,7 +30,7 @@
 #include "src/base/game_data.h"
 #include "src/base/pal_pos.h"
 #include "src/inventory/inventory.h"
-#include "src/player/chara_status.h"
+#include "../enums/chara_status.h"
 #include "src/player/experience.h"
 #include "src/player/party.h"
 #include "src/player/poison_status.h"
