@@ -8,11 +8,14 @@
 #define PAL_OHOS_UTIL_H
 
 #include "util/common.h"
+#include <rawfile/raw_file_manager.h>
 
 class UTIL {
 public:
-    static LPRAWFILE openRequiredFile(const char *lpsz_file_name);
-    static void closeFile(LPRAWFILE fp);
+    static RawFile* openRequiredFile(const char *lpsz_file_name);
+    static void closeFile(RawFile* fp);
+private:
+    static RawFile*openRequiredFileForMode(const char *lpsz_file_name,const NativeResourceManager*mgr);
 };
 
 

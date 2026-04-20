@@ -35,6 +35,7 @@
 #include "src/player/party.h"
 #include "src/player/poison_status.h"
 #include "src/player/trail.h"
+#include "src/ui/object_desc.h"
 #include "util/common.h"
 #include "util/palcommon.h"
 #include <cstdint>
@@ -92,7 +93,8 @@ struct GlobalVars {
      * 待ui类补全后补全该处
      * LPOBJECTDESC lpObjectDesc;
      **/
-
+    ObjectDesc* lp_object_desc_;
+    
     uint32_t frame_num_;
 };
 

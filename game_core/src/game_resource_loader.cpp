@@ -5,6 +5,7 @@
 // please include "napi/native_api.h".
 
 #include "src/game_resource_loader.h"
+#include "src/ui/ui.h"
 #include "util/util.h"
 #include <cstdint>
 
@@ -12,6 +13,7 @@ GameResourceLoader *GameResourceLoader::getInstance() {
     static GameResourceLoader instance;
     return &instance;
 }
+
 
 bool GameResourceLoader::initGlobals() {
     // 分配内存空间
@@ -23,6 +25,9 @@ bool GameResourceLoader::initGlobals() {
             return false;
         }
     }
+    /**
+     * 此处作用将指针指向打开的文件位置
+     */
     globals_->f.FBP = UTIL::openRequiredFile("FBP.MKF");
     globals_->f.MGO = UTIL::openRequiredFile("MGO.MKF");
     globals_->f.BALL = UTIL::openRequiredFile("BALL.MKF");
@@ -31,7 +36,8 @@ bool GameResourceLoader::initGlobals() {
     globals_->f.FIRE = UTIL::openRequiredFile("FIRE.MKF");
     globals_->f.RGM = UTIL::openRequiredFile("RGM.MKF");
     globals_->f.SSS = UTIL::openRequiredFile("SSS.MKF");
-
+    
+    globals_->lp_object_desc_=UI::loadObjectDesc("desc.dat");
     /**
      * 获取游戏资源版本
      */
