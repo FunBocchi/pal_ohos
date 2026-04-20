@@ -10,11 +10,11 @@
 #include "util/common.h"
 
 // 玩家队伍成员
-typedef struct Party {
-    WORD player_role_;  // 角色编号-对应角色数据表中的索引
-    SHORT x_, y_;       // 地图坐标
-    WORD frame_;        // 动画帧号-当前播放动画的帧索引
-    WORD image_offset_; // 图像偏移量
-} PARTY, *LPPARTY;
+struct Party {
+    uint16_t player_role_;  // 角色编号-对应角色数据表中的索引
+    int16_t x_, y_;       // 地图坐标
+    uint16_t frame_;        // 动画帧号-当前播放动画的帧索引
+    uint16_t image_offset_; // 图像偏移量
+};
 
 #endif // pal_ohos_PARTY_H

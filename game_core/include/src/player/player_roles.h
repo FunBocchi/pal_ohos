@@ -14,7 +14,7 @@
 // 对源代码进行了修改，使用array实现相同功能，暂时不知道会不会对二进制源码的读取产生影响
 using Players = std::array<WORD, MAX_PLAYER_ROLES>;
 
-typedef struct PlayerRoles {
+struct PlayerRoles {
     Players avatar_;                                                  // 立绘（显示在状态界面）
     Players sprite_num_in_battle_;                                    // 战斗中显示的精灵图编号，来自F.MKF
     Players sprite_num_;                                              // 普通场景中显示的精灵图编号，来自MGO.MKF
@@ -50,6 +50,6 @@ typedef struct PlayerRoles {
     Players magic_sound_;                                             // 魔攻音效
     Players cover_sound_;                                             // 保护队友时音效
     Players dying_sound_;                                             // 濒死音效
-} PLAYERROLES, *LPPLAYERROLES;
+};
 
 #endif // pal_ohos_PLAYER_ROLES_H

@@ -9,9 +9,9 @@
 
 #include "util/common.h"
 
-typedef struct PoisonStatus {
-    WORD poison_id_;
-    WORD poison_script_;
-} POISONSTATUS, *LPPOISONSTATUS;
+struct PoisonStatus {
+    uint16_t poison_id_;
+    uint16_t poison_script_;
+};
 
 #endif // pal_ohos_POISON_STATUS_H

@@ -11,7 +11,7 @@
 
 // 可装备身体部位
 // 暂时未确认类型，理论上是2字节类型uint16_t
-typedef enum class BodyPart : uint16_t {
+enum class BodyPart : uint16_t {
     Head = 0, // 头
     Body,
     Shoulder,
@@ -19,6 +19,6 @@ typedef enum class BodyPart : uint16_t {
     Feet,
     Wear,
     Extra
-} BODYPART;
+};
 
 #endif // pal_ohos_BODY_PART_H
