@@ -61,4 +61,6 @@
 // 最大等级限制
 #define MAX_LEVELS 99
 
+
+
 #endif // pal_ohos_PALCOMMON_H

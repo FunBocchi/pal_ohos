@@ -6,6 +6,7 @@
 
 #include "src/game_resource_loader.h"
 #include "src/ui/ui.h"
+#include "util/palcommon_util.h"
 #include "util/util.h"
 #include <cstdint>
 
@@ -14,14 +15,13 @@ GameResourceLoader *GameResourceLoader::getInstance() {
     return &instance;
 }
 
-
 bool GameResourceLoader::initGlobals() {
     // 分配内存空间
     if (globals_ == nullptr) {
         // 分配内存区域并进行初始化
         globals_ = new GlobalVars();
         if (globals_ == nullptr) {
-        //分配内存空间失败返回
+            // 分配内存空间失败返回
             return false;
         }
     }
@@ -36,8 +36,8 @@ bool GameResourceLoader::initGlobals() {
     globals_->f.FIRE = UTIL::openRequiredFile("FIRE.MKF");
     globals_->f.RGM = UTIL::openRequiredFile("RGM.MKF");
     globals_->f.SSS = UTIL::openRequiredFile("SSS.MKF");
-    
-    globals_->lp_object_desc_=UI::loadObjectDesc("desc.dat");
+
+    globals_->lp_object_desc_ = UI::loadObjectDesc("desc.dat");
     /**
      * 获取游戏资源版本
      */
@@ -88,18 +88,35 @@ void GameResourceLoader::freeGlobals() {
 }
 
 /**
+ * 内存交换宏
+ */
+#define DO_BYTESWAP(buf, size)                                                                                         \
+    for (i = 0; i < (size) / 2; ++i) {                                                                                 \
+        ((uint16_t *)(buf))[i];                                                                                        \
+    }
+
+#define LOAD_DATA(buf, size, chunknum, fp)                                                                             \
+    do {                                                                                                               \
+        PAL_MKFReadChunk((uint8_t *)(buf), (size), (chunknum), (fp));                                                  \
+        DO_BYTESWAP(buf, size);                                                                                        \
+    } while (0)
+
+/**
  * 从文件中读取游戏数据
  */
-void GameResourceLoader::readGlobalGameData() { const GameData *p = &globals_->g;}
+void GameResourceLoader::readGlobalGameData() { const GameData *p = &globals_->g; }
 
 /**
  * 初始化游戏数据
  */
-void GameResourceLoader::initGlobalGameData() {  }
+void GameResourceLoader::initGlobalGameData() {}
 
 /**
  * 加载默认游戏数据
  */
-void GameResourceLoader::loadDefaultGame() { GameData*p=&globals_->g;uint32_t i;
+void GameResourceLoader::loadDefaultGame() {
+    GameData *p = &globals_->g;
+    uint32_t i;
 
-globals_->entering_scene_=true;}
+    globals_->entering_scene_ = true;
+}
