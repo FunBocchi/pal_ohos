@@ -76,6 +76,13 @@ public:
     bool init_globals();
     void free_globals();
     void read_global_game_data();
+    void save_game(int32_t saveSlot,uint16_t savedTimes   );
+    void init_game_data(int32_t saveSlot);
+    void reload_in_next_tick(int32_t saveSlot);
+    int count_item(uint16_t objectID);
+    bool get_item_index_to_inventory(uint16_t objectID,int32_t* index);
+    int add_item_to_inventory(uint16_t objectID,int32_t num);
+    bool increase_HPMP(uint16_t playerRole,int16_t hp,int16_t mp);
 };
 
 #endif //PAL_OHOS_GLOBAL_H
