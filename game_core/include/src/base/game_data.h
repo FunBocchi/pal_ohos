@@ -27,39 +27,39 @@
 typedef uint16_t LEVELUPEXP, *LPLEVELUPEXP;
 
 struct GameData {
-    EventObject* lp_event_object_;
-    int n_event_object_;
+    EventObject* lp_event_object;
+    int n_event_object;
 
-    Scene scene_[MAX_SCENES];
-   Object object_[MAX_OBJECTS];
+    Scene scene[MAX_SCENES];
+   Object object[MAX_OBJECTS];
 
-    ScriptEntry* lp_script_entry_;
-    int n_script_entry_;
+    ScriptEntry* lp_script_entry;
+    int n_script_entry;
 
-    Store* lp_store_;
-    int n_store_;
+    Store* lp_store;
+    int n_store;
 
-    Enemy* lp_enemy_;
-    int n_enemy_;
+    Enemy* lp_enemy;
+    int n_enemy;
 
-    EnemyTeam* lp_enemy_team_;
-    int n_enemy_team_;
+    EnemyTeam* lp_enemy_team;
+    int n_enemy_team;
 
     PlayerRoles player_roles;
 
-    Magic* lp_magic_;
-    int n_magic_;
+    Magic* lp_magic;
+    int n_magic;
 
-    BattleField* lp_battle_field_;
-    int n_battle_field_;
+    BattleField* lp_battle_field;
+    int n_battle_field;
 
-    LevelUpMagic_All* lp_levelup_magic_;
-    int n_levelup_magic_;
+    LevelUpMagic_All* lp_levelup_magic;
+    int n_levelup_magic;
 
-    EnemyPos enemy_pos_;
-    LEVELUPEXP levelup_exp_[MAX_LEVELS + 1];
+    EnemyPos enemy_pos;
+    LEVELUPEXP levelup_exp[MAX_LEVELS + 1];
 
-    uint16_t     battle_effect_index_[10][2];
+    uint16_t     battle_effect_index[10][2];
 };
 
 #endif // pal_ohos_GAME_DATA_H

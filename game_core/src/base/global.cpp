@@ -7,7 +7,7 @@
 #include "src/base/global.h"
 #include "util/util.h"
 
-bool GlobalVars::initGlobals() {
+bool GlobalVars::init_globals() {
     f_.FBP=UTIL::openRequiredFile("FBP.MKF");
     f_.MGO=UTIL::openRequiredFile("MGO.MKF");
     f_.BALL=UTIL::openRequiredFile("BALL.MKF");
