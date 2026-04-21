@@ -12,14 +12,14 @@
 
 // 法术类型
 enum class MagicType : int16_t {
-    Normal = 0,        // 普通单体
-    AttackAll = 1,     // 依次攻击
-    AttackWhole = 2,   // 群体攻击
-    AttackField = 3,   // 全屏攻击
-    ApplyToPlayer = 4, // 单体治疗
-    ApplyToParty = 5,  // 群体治疗
-    Trance = 8,        // 觉醒（特殊状态）
-    Summon = 9         // 召唤术
+    kNormal = 0,        // 普通单体
+    kAttackAll = 1,     // 依次攻击
+    kAttackWhole = 2,   // 群体攻击
+    kAttackField = 3,   // 全屏攻击
+    kApplyToPlayer = 4, // 单体治疗
+    kApplyToParty = 5,  // 群体治疗
+    kTrance = 8,        // 觉醒（特殊状态）
+    kSummon = 9         // 召唤术
 };
 
 #endif // pal_ohos_MAGIC_TYPE_H

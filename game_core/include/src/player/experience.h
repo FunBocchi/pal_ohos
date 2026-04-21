@@ -7,26 +7,26 @@
 #ifndef pal_ohos_EXPERIENCE_H
 #define pal_ohos_EXPERIENCE_H
 
-#include "util/common.h"
 #include "util/palcommon.h"
+#include <cstdint>
 
 struct Experience {
-    uint16_t exp_; // 当前经验点
-    uint16_t reserved_;
-    uint16_t level_; // 当前等级
-    uint16_t count_;
+    uint16_t exp; // 当前经验点
+    uint16_t reserved;
+    uint16_t level; // 当前等级
+    uint16_t count;
 };
 
 // 各种属性设定，除角色升级外，可通过多次使用对应技能或动作来提升对应能力值
 struct AllExperience {
-    Experience primary_exp_[MAX_PLAYER_ROLES];
-    Experience health_exp_[MAX_PLAYER_ROLES];
-    Experience magic_exp_[MAX_PLAYER_ROLES];
-    Experience attack_exp_[MAX_PLAYER_ROLES];
-    Experience magic_power_exp_[MAX_PLAYER_ROLES];
-    Experience defence_exp_[MAX_PLAYER_ROLES];
-    Experience dexterity_exp_[MAX_PLAYER_ROLES];
-    Experience flee_exp_[MAX_PLAYER_ROLES];
+    Experience primary_exp[MAX_PLAYER_ROLES];
+    Experience health_exp[MAX_PLAYER_ROLES];
+    Experience magic_exp[MAX_PLAYER_ROLES];
+    Experience attack_exp[MAX_PLAYER_ROLES];
+    Experience magic_power_exp[MAX_PLAYER_ROLES];
+    Experience defence_exp[MAX_PLAYER_ROLES];
+    Experience dexterity_exp[MAX_PLAYER_ROLES];
+    Experience flee_exp[MAX_PLAYER_ROLES];
 };
 
 #endif // pal_ohos_EXPERIENCE_H

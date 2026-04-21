@@ -10,13 +10,13 @@
 #include "util/common.h"
 #include <cstdint>
 enum class ItemFlag : uint16_t {
-    Usable = (1 << 0),
-    Equipable = (1 << 1),
-    Throwable = (1 << 2),
-    Consuming = (1 << 3),
-    ApplyToAll = (1 << 4),
-    Sellable = (1 << 5),
-    EquipableByPlayerRole_First = (1 << 6)
+    kUsable = (1 << 0),
+    kEquipable = (1 << 1),
+    kThrowable = (1 << 2),
+    kConsuming = (1 << 3),
+    kApplyToAll = (1 << 4),
+    kSellable = (1 << 5),
+    kEquipableByPlayerRole_First = (1 << 6)
 };
 
 #endif // pal_ohos_ITEM_FLAG_H

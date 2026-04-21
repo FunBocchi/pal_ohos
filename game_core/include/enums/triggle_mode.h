@@ -6,19 +6,20 @@
 
 #ifndef pal_ohos_TRIGGLE_MODE_H
 #define pal_ohos_TRIGGLE_MODE_H
-#include "util/common.h"
+
+#include <cstdint>
 
 // 地图元素的触发方式
-enum class TriggerMode {
+enum class TriggerMode:uint16_t {
     None = 0,
-    SearchNear,
-    SearchNormal,
-    SearchFar,
-    TouchNear,
-    TouchNormal,
-    TouchFar,
-    TouchFurther,
-    TouchFurthest
+    SearchNear=1,
+    SearchNormal=2,
+    SearchFar=3,
+    TouchNear=4,
+    TouchNormal=5,
+    TouchFar=6,
+    TouchFurther=7,
+    TouchFurthest=8
 };
 
 #endif // pal_ohos_TRIGGLE_MODE_H

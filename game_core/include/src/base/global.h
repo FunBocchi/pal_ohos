@@ -1,101 +1,80 @@
-/** -*- mode: c; tab-width: 4; c-basic-offset: 4; c-file-style: "linux" -*-
- *
- * Copyright (c) 2009-2011, Wei Mingzhi <whistler_wmz@users.sf.net>.
- * Copyright (c) 2011-2024, SDLPAL development team.
- * All rights reserved.
- *
- * C++ port and optimizations Copyright (c) 2025-2026, FunBocchi <lzx13735999188@petalmail.com>
- *
- *
- * This file is part of SDLPAL.
- *
- * SDLPAL is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 3
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- **/
+//
+// Created on 2026/4/21.
+//
+// Node APIs are not fully supported. To solve the compilation error of the interface cannot be found,
+// please include "napi/native_api.h".
 
-#ifndef pal_ohos_GLOBAL_H
-#define pal_ohos_GLOBAL_H
+#ifndef PAL_OHOS_GLOBAL_H
+#define PAL_OHOS_GLOBAL_H
 
-// 对源项目进行解耦，通过不同文件存储枚举类型用以区分
 #include "src/base/files.h"
 #include "src/base/game_data.h"
-#include "src/base/pal_pos.h"
+#include "../../enums/chara_status.h"
 #include "src/inventory/inventory.h"
-#include "../enums/chara_status.h"
 #include "src/player/experience.h"
 #include "src/player/party.h"
 #include "src/player/poison_status.h"
 #include "src/player/trail.h"
 #include "src/ui/object_desc.h"
-#include "util/common.h"
-#include "util/palcommon.h"
 #include <cstdint>
 
-struct GlobalVars {
-    Files f;
-    GameData g;
+class GlobalVars{
+private:
+    Files f_;
+    GameData g_;
+    
+    uint32_t cur_main_menu_item_;//当前主菜单项编号
+    uint32_t cur_system_menu_item_;//当前系统菜单项编号
+    int32_t cur_inv_menu_item_;//当前物品栏菜单项编号
 
-    int32_t cur_main_menu_item_;
-    int32_t cur_system_menu_item_;
-    int32_t cur_inv_menu_item_;
-    int32_t cur_playing_rng_;
-    uint8_t current_save_slot_;
-    bool in_main_game_;
-    bool entering_scene_;
-    bool need_to_fade_in_;
-    bool in_battle_;
-    bool auto_battle_;
+    int32_t cur_playing_rng_;//当前正在播放的RNG动画
+    uint8_t current_save_slot_;//当前存档槽位（1-5）
+    bool in_main_game_;//若在主游戏中则为True
+    bool entering_scene_;// 若正在进入新场景则为 TRUE
+    bool need_to_fade_in_;// 若绘制场景时需要淡入则为 TRUE
+    bool in_battle_;// 若在战斗中则为 TRUE
+    bool auto_battle_;// 若为自动战斗则为 TRUE
 
 #ifndef PAL_CLASSIC
-    uint8_t battle_speed_;
+    uint8_t battle_speed_;//战斗速度（1=最快，5=最慢）
 #endif
-    uint16_t last_unequipped_item_;
+    uint16_t last_unequipped_item_;// 最后卸下的物品
 
-    // 使用array替代源项目创建数组的方案，更符合C++规范
-    std::array<PlayerRoles, MAX_PLAYER_EQUIPMENTS + 1> equipment_effect_;
-    std::array<std::array<uint16_t, kCharaStatusCount>, MAX_PLAYER_ROLES> player_status_;
+    std::array<PlayerRoles, MAX_PLAYER_EQUIPMENTS + 1> equipment_effect_;// 装备效果
+    std::array<std::array<uint16_t, kCharaStatusCount>, MAX_PLAYER_ROLES> player_status_;// 玩家状态
 
-    PalPos viewport_;
+    PalPos viewport_;// 视口坐标
     PalPos party_offset_;
     uint16_t layer_;
-    uint16_t max_party_member_index_;
-    std::array<Party, MAX_PLAYABLE_PLAYER_ROLES> party_;
-    std::array<Trail, MAX_PLAYABLE_PLAYER_ROLES> trail_;
-    uint16_t party_direction_;
-    uint16_t num_scene_;
-    uint16_t num_palette_;
-    bool night_palette_;
-    uint16_t num_music_;
-    uint16_t num_battle_music_;
-    uint16_t num_battle_field_;
-    uint16_t collect_value_;
-    uint16_t screen_wave_;
+    uint16_t max_party_member_index_;// 队伍成员的最大索引（0 至 MAX_PLAYERS_IN_PARTY - 1）
+    std::array<Party, MAX_PLAYABLE_PLAYER_ROLES> party_;// 玩家队伍
+    std::array<Trail, MAX_PLAYABLE_PLAYER_ROLES> trail_;// 玩家足迹
+    uint16_t party_direction_;// 队伍朝向
+    uint16_t num_scene_; // 当前场景编号
+    uint16_t num_palette_;// 当前调色板编号
+    bool night_palette_;// 若使用较暗的夜间调色板则为 TRUE
+    uint16_t num_music_;// 当前音乐编号
+    uint16_t num_battle_music_;// 当前战斗音乐编号
+    uint16_t num_battle_field_;// 当前战斗场景编号
+    uint16_t collect_value_;// “收集”物品的价值
+    uint16_t screen_wave_;// 屏幕波动程度
     int16_t wave_progression_;
     uint16_t chase_range_;
-    uint16_t chasespeed_change_cycles_;
+    uint16_t chase_speed_change_cycles_;
     uint16_t follower_;
 
-    uint32_t cash_;
+    uint32_t cash_;// 金钱数量
 
-    AllExperience exp_;
-    std::array<std::array<PoisonStatus, MAX_PLAYABLE_PLAYER_ROLES>, MAX_POISONS> poison_status_;
-    std::array<Inventory, MAX_INVENTORY> inventory_;
-    /**
-     * 待ui类补全后补全该处
-     * LPOBJECTDESC lpObjectDesc;
-     **/
+    AllExperience exp_;// 经验状态
+    std::array<std::array<PoisonStatus, MAX_PLAYABLE_PLAYER_ROLES>, MAX_POISONS> poison_status_;// 中毒状态
+    std::array<Inventory, MAX_INVENTORY> inventory_;// 物品栏状态
     ObjectDesc* lp_object_desc_;
     
     uint32_t frame_num_;
+    
+public:
+    bool initGlobals();
+    void freeGlobals();
 };
 
-#endif // pal_ohos_GLOBAL_H
+#endif //PAL_OHOS_GLOBAL_H

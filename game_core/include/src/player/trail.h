@@ -11,8 +11,8 @@
 
 // 队员跟随轨迹，用于让后排队员按前排队友的路径跟随移动
 struct Trail {
-    uint16_t x_, y_;     // 历史位置坐标
-    uint16_t direction_; // 移动方向-指示当前位置的角色朝向
+    uint16_t x, y;     // 历史位置坐标
+    uint16_t direction; // 移动方向-指示当前位置的角色朝向
 };
 
 #endif // pal_ohos_TRAIL_H

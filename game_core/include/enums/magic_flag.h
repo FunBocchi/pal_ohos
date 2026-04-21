@@ -11,10 +11,10 @@
  * 法术特性标签
  */
 enum class MagicFlag {
-    UsableOutSideBattle = (1 << 0),
-    UsableInBattle = (1 << 1),
-    UsableToEnemy = (1 << 3),
-    ApplyToAll = (1 << 4)
+    kUsableOutSideBattle = (1 << 0),
+    kUsableInBattle = (1 << 1),
+    kUsableToEnemy = (1 << 3),
+    kApplyToAll = (1 << 4)
 };
 
 #endif // pal_ohos_MAGIC_FLAG_H

@@ -12,9 +12,9 @@
 
 // 事件对象的状态及触发模式，由EventObject调用
 enum class ObjectState : int16_t {
-    Hidden = 0, // 隐藏
-    Normal = 1,
-    Blocker = 2
+    kHidden = 0, // 隐藏
+    kNormal = 1,
+    kBlocker = 2
 };
 
 #endif // pal_ohos_OBJECT_STATE_H
