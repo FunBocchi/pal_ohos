@@ -73,8 +73,9 @@ private:
     uint32_t frame_num_;
     
 public:
-    bool initGlobals();
-    void freeGlobals();
+    bool init_globals();
+    void free_globals();
+    void read_global_game_data();
 };
 
 #endif //PAL_OHOS_GLOBAL_H
