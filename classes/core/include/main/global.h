@@ -7,15 +7,15 @@
 #ifndef PAL_OHOS_GLOBAL_H
 #define PAL_OHOS_GLOBAL_H
 
-#include "src/base/files.h"
-#include "src/base/game_data.h"
-#include "../../enums/chara_status.h"
-#include "src/inventory/inventory.h"
-#include "src/player/experience.h"
-#include "src/player/party.h"
-#include "src/player/poison_status.h"
-#include "src/player/trail.h"
-#include "src/ui/object_desc.h"
+#include "enums/chara_status.h"
+#include "structs/base/files.h"
+#include "structs/base/game_data.h"
+#include "structs/inventory/inventory.h"
+#include "structs/player/experience.h"
+#include "structs/player/party.h"
+#include "structs/player/poison_status.h"
+#include "structs/player/trail.h"
+#include "structs/ui/object_desc.h"
 #include <cstdint>
 
 class GlobalVars {

@@ -4,10 +4,7 @@
 // Node APIs are not fully supported. To solve the compilation error of the interface cannot be found,
 // please include "napi/native_api.h".
 
-#include "src/base/global.h"
-#include "src/ui/ui.h"
-#include "util/palcommon.h"
-#include "util/util.h"
+#include "global.h"
 
 /**
  * 由于将各种方法封装进了GlobalVars类中，同时该类为单例模式，因此做出了一定程度上的修改

@@ -15,15 +15,8 @@ add_subdirectory(core)
 add_library(
     game_core
     SHARED
-    $<TARGET_OBJECTS:core_objects>
-)
-
-# 我们会在 core 的 CMakeLists.txt 中将 OBJECT 目标名收集到一个变量中
-target_include_directories(
-    game_core
-    PUBLIC
-    ${CLASSES_ROOT}/common
-    ${CLASSES_ROOT}/core/include
+    $<TARGET_OBJECTS:main_objects>
+    $<TARGET_OBJECTS:bridge_objects>
 )
 
 # 链接系统库
@@ -31,4 +24,5 @@ target_link_libraries(
     game_core
     PUBLIC
     librawfile.z.so
+    common_headers
 )

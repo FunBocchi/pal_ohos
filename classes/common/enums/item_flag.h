@@ -7,8 +7,6 @@
 #ifndef pal_ohos_ITEM_FLAG_H
 #define pal_ohos_ITEM_FLAG_H
 
-#include "util/common.h"
-#include <cstdint>
 enum class ItemFlag {
     kUsable = (1 << 0),
     kEquippable = (1 << 1),

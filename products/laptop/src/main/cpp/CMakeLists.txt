@@ -1,6 +1,7 @@
 # the minimum version of CMake.
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.17.0)
 project(pal_ohos_laptop)
+
 
 set(
   NATIVERENDER_ROOT_PATH

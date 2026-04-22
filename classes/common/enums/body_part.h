@@ -25,7 +25,6 @@
 #ifndef pal_ohos_BODY_PART_H
 #define pal_ohos_BODY_PART_H
 
-#include "stdint.h"
 // 可装备身体部位
 // 暂时未确认类型，理论上是2字节类型uint16_t
 enum class BodyPart {

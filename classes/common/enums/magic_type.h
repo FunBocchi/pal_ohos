@@ -7,11 +7,8 @@
 #ifndef pal_ohos_MAGIC_TYPE_H
 #define pal_ohos_MAGIC_TYPE_H
 
-#include "util/common.h"
-#include <cstdint>
-
 // 法术类型
-enum class MagicType : int16_t {
+enum class MagicType {
     kNormal = 0,        // 普通单体
     kAttackAll = 1,     // 依次攻击
     kAttackWhole = 2,   // 群体攻击
