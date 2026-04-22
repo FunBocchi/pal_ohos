@@ -19,14 +19,16 @@ add_library(
 )
 
 # 我们会在 core 的 CMakeLists.txt 中将 OBJECT 目标名收集到一个变量中
-target_include_directories(game_core
+target_include_directories(
+    game_core
     PUBLIC
     ${CLASSES_ROOT}/common
     ${CLASSES_ROOT}/core/include
 )
 
 # 链接系统库
-target_link_libraries(game_core
+target_link_libraries(
+    game_core
     PUBLIC
     librawfile.z.so
 )
