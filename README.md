@@ -1,8 +1,8 @@
 
 
-# ProjectName
+# 仙剑
 
-ProjectName and Description
+基于palsdl、pal-harmony等项目开发的鸿蒙版本
 
 <!-- PROJECT SHIELDS -->
 
@@ -17,31 +17,31 @@ ProjectName and Description
 <br />
 
 <p align="center">
-  <a href="https://github.com/shaojintian/Best_README_template/">
+  <a href="https://gitcode.com/funbocchi/pal_ohos/">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">"完美的"README模板</h3>
+  <h3 align="center">Pal_ohos</h3>
   <p align="center">
-    一个"完美的"README模板去快速开始你的项目！
+    基于源项目开源代码的C++重构优化版本
     <br />
-    <a href="https://github.com/shaojintian/Best_README_template"><strong>探索本项目的文档 »</strong></a>
+    <a href="https://gitcode.com/funbocchi/pal_ohos"><strong>探索本项目的文档 »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/shaojintian/Best_README_template">查看Demo</a>
+    <a href="https://gitcode.com/funbocchi/pal_ohos">查看Demo</a>
     ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">报告Bug</a>
+    <a href="https://gitcode.com/funbocchi/pal_ohos/issues">报告Bug</a>
     ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">提出新特性</a>
+    <a href="https://gitcode.com/funbocchi/pal_ohos/issues">提出新特性</a>
   </p>
 
 </p>
 
 
- 本篇README.md面向开发者
  
 ## 目录
-
+- [开发概述](#开发概述)
+  - [调整和优化的部分](#调整和优化部分)
 - [上手指南](#上手指南)
   - [开发前的配置要求](#开发前的配置要求)
   - [安装步骤](#安装步骤)
@@ -55,9 +55,17 @@ ProjectName and Description
 - [作者](#作者)
 - [鸣谢](#鸣谢)
 
-### 上手指南
+### 开发概述
 
-请将所有链接中的“shaojintian/Best_README_template”改为“your_github_name/your_repository”
+
+
+###### 调整和优化部分
+
+1. 源项目是基于C语言进行整体构造的，从结构上看，虽然使用了结构体对变量进行包裹，但是整体存储是放在全局空间当中，比较复杂，类似的还有方法也是如此。出于对源项目代码进行解耦的想法，在开发过程中对上述的结构体、方法进行了进一步封装，通过目录进行区分。
+2. 源项目中声明了大量的类型别名，开发过程中对此进行了一定的删减。并使用cstdint提供的类型别名进行替代。
+3. 对于部分结构体中使用到的，已存在对应结构体但仍然使用基础类型进行声明的部分，考虑到源项目采取swap的方式对此类变量进行赋值，在不改变本原则的前提下进行了一定优化。
+
+### 上手指南
 
 
 
@@ -72,29 +80,50 @@ ProjectName and Description
 2. Clone the repo
 
 ```sh
-git clone https://github.com/shaojintian/Best_README_template.git
+git clone https://gitcode.com/funbocchi/pal_ohos.git
 ```
 
 ### 文件目录说明
 eg:
 
 ```
-filetree 
-├── ARCHITECTURE.md
-├── LICENSE.txt
-├── README.md
-├── /account/
-├── /bbs/
-├── /docs/
-│  ├── /rules/
-│  │  ├── backend.txt
-│  │  └── frontend.txt
-├── manage.py
-├── /oa/
-├── /static/
-├── /templates/
-├── useless.md
-└── /util/
+pal_ohos/
+├── classes/
+│   ├── CMakeLists.txt
+│   ├── include/
+│   │   ├── src/
+│   │   ├── bridge/
+│   │   ├── engine/
+│   │   └── util/
+│   ├── src/
+│   ├── bridge/
+│   │   ├── CMakeLists.txt
+│   │   ├── XComponentBridgeRegistry.cpp
+│   │   ├── XComponentBridgeRegistry.h
+│   │   ├── GameEngineBridge.cpp
+│   │   └── GameEngineBridge.h
+│   ├── engine/
+│   │   ├── CMakeLists.txt
+│   │   ├── battle.cpp
+│   │   ├── script.cpp
+│   │   ├── map.cpp
+│   │   └── include/
+│   │       ├── battle.h
+│   │       ├── script.h
+│   │       └── map.h
+│   └── util/
+│       ├── CMakeLists.txt
+│       ├── util.cpp
+│       └── include/
+│           └── util.h
+│
+├── product/
+│   └── laptop/
+│       └── src/main/cpp/
+│           ├── CMakeLists.txt
+│           └── napi_init.cpp
+│
+└── CMakeLists.txt
 
 ```
 
@@ -104,7 +133,7 @@ filetree
 
 ### 开发的架构 
 
-请阅读[ARCHITECTURE.md](https://github.com/shaojintian/Best_README_template/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
+请阅读[ARCHITECTURE.md](https://gitcode.com/funbocchi/pal_ohos/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
 
 ### 部署
 
@@ -147,7 +176,7 @@ xxx@xxxx
 
 ### 版权说明
 
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt)
+该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://gitcode.com/funbocchi/pal_ohos/blob/master/LICENSE.txt)
 
 ### 鸣谢
 
@@ -162,15 +191,15 @@ xxx@xxxx
 <!-- links -->
 [your-project-path]:shaojintian/Best_README_template
 [contributors-shield]: https://img.shields.io/github/contributors/shaojintian/Best_README_template.svg?style=flat-square
-[contributors-url]: https://github.com/shaojintian/Best_README_template/graphs/contributors
+[contributors-url]: https://gitcode.com/funbocchi/pal_ohos/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/shaojintian/Best_README_template.svg?style=flat-square
-[forks-url]: https://github.com/shaojintian/Best_README_template/network/members
+[forks-url]: https://gitcode.com/funbocchi/pal_ohos/network/members
 [stars-shield]: https://img.shields.io/github/stars/shaojintian/Best_README_template.svg?style=flat-square
-[stars-url]: https://github.com/shaojintian/Best_README_template/stargazers
+[stars-url]: https://gitcode.com/funbocchi/pal_ohos/stargazers
 [issues-shield]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg?style=flat-square
 [issues-url]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg
 [license-shield]: https://img.shields.io/github/license/shaojintian/Best_README_template.svg?style=flat-square
-[license-url]: https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt
+[license-url]: https://gitcode.com/funbocchi/pal_ohos/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/shaojintian
 
