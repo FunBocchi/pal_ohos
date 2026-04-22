@@ -44,6 +44,18 @@ void GlobalVars::RemoveMagic(uint16_t player_role, uint16_t magic) {
     }
 }
 
+/**
+ * 对指定角色设置持续状态
+ * @param player_role   
+ * @param status_id
+ * @param num_round
+ * @return
+ */
 bool GlobalVars::SetPlayerStatus(uint16_t player_role, uint16_t status_id, uint16_t num_round) {
-    bool 
+    bool if_success=true;
+#ifndef PAL_CLASSIC
+    if (status_id==CharaStatus::kSlow&&player_status_[player_role][CharaStatus::kHaste]>0) {
+        
+    }
+#endif
 }

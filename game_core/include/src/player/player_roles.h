@@ -11,7 +11,9 @@
 #include <array>
 #include <cstdint>
 
-// 对源代码进行了修改，使用array实现相同功能，暂时不知道会不会对二进制源码的读取产生影响
+/*
+ * 角色各项属性的默认存储单元
+ */
 using Players = std::array<uint16_t, MAX_PLAYER_ROLES>;
 
 struct PlayerRoles {

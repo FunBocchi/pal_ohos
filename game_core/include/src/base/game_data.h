@@ -31,7 +31,7 @@ struct GameData {
     int n_event_object;
 
     Scene scene[MAX_SCENES];
-   Object object[MAX_OBJECTS];
+    Object object[MAX_OBJECTS];
 
     ScriptEntry* lp_script_entry;
     int n_script_entry;

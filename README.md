@@ -21,7 +21,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Pal_ohos</h3>
+  <h3 align="center">仙剑——鸿蒙版</h3>
   <p align="center">
     基于源项目开源代码的C++重构优化版本
     <br />

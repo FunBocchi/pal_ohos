@@ -23,8 +23,8 @@ private:
     Files f_;
     GameData g_;
 
-    uint32_t cur_main_menu_item_;   // 当前主菜单项编号
-    uint32_t cur_system_menu_item_; // 当前系统菜单项编号
+    int32_t cur_main_menu_item_;   // 当前主菜单项编号
+    int32_t cur_system_menu_item_; // 当前系统菜单项编号
     int32_t cur_inv_menu_item_;     // 当前物品栏菜单项编号
 
     int32_t cur_playing_rng_;   // 当前正在播放的RNG动画
