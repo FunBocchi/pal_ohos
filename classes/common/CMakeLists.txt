@@ -1,6 +1,6 @@
-target_include_directories(game_core_common
+add_library(common_headers INTERFACE)
+
+target_include_directories(common_headers
     INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR}/defs
-    ${CMAKE_CURRENT_SOURCE_DIR}/enums
-    ${CMAKE_CURRENT_SOURCE_DIR}/structs
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )

@@ -7,10 +7,9 @@
 #ifndef pal_ohos_ENUMS_CHARA_STATUS_H
 #define pal_ohos_ENUMS_CHARA_STATUS_H
 
-#include "util/common.h"
-
+#include <cstddef>
 // 角色状态
-enum class CharaStatus : uint16_t {
+enum class CharaStatus {
     kConfused = 0, // 混乱状态（随机攻击友方）
 // 判断游戏模式是否为经典模式
 #ifdef PAL_CLASSIC

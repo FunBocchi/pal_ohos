@@ -9,14 +9,14 @@
 
 #include "util/common.h"
 #include <cstdint>
-enum class ItemFlag : uint16_t {
+enum class ItemFlag {
     kUsable = (1 << 0),
-    kEquipable = (1 << 1),
+    kEquippable = (1 << 1),
     kThrowable = (1 << 2),
     kConsuming = (1 << 3),
     kApplyToAll = (1 << 4),
     kSellable = (1 << 5),
-    kEquipableByPlayerRole_First = (1 << 6)
+    kEquippableByPlayerRole_First = (1 << 6)
 };
 
 #endif // pal_ohos_ITEM_FLAG_H
