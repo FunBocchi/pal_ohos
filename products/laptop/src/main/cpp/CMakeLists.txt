@@ -41,5 +41,5 @@ target_link_libraries(
   librawfile.z.so
   libavplayer.so
   libnative_media_core.so
-  game_core
+  core
 )
