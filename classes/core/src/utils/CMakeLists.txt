@@ -1,23 +1,22 @@
 # 收集当前模块的所有源文件
-file(GLOB MAIN_SOURCES "*.cpp")
+file(GLOB UTILS_SOURCES "*.cpp")
 
 # 创建object库
 add_library(
-    main_objects
+    utils_objects
     OBJECT
-    ${MAIN_SOURCES}
+    ${UTILS_SOURCES}
 )
 
 target_link_libraries(
-    main_objects
+    utils_objects
     PRIVATE
     common_headers
 )
 
 # 私有的头文件
 target_include_directories(
-    main_objects
+    utils_objects
     PRIVATE
-    ${CLASSES_ROOT}/core/include/main
     ${CLASSES_ROOT}/core/include/utils
 )

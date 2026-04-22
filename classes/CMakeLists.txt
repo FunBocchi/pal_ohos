@@ -17,6 +17,7 @@ add_library(
     SHARED
     $<TARGET_OBJECTS:main_objects>
     $<TARGET_OBJECTS:bridge_objects>
+    $<TARGET_OBJECTS:utils_objects>
 )
 
 # 链接系统库

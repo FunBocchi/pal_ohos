@@ -5,21 +5,28 @@
 // please include "napi/native_api.h".
 
 #include "global.h"
+#include "mkf_util.h"
 
 /**
  * 由于将各种方法封装进了GlobalVars类中，同时该类为单例模式，因此做出了一定程度上的修改
  */
+
+GlobalVars *GlobalVars::GetInstance() {
+    static GlobalVars instance;
+    return &instance;
+}
+
 bool GlobalVars::InitGlobals() {
     auto f = getF();
     // 打开文件
-    f.FBP = UTIL::openRequiredFile("FBP.MKF");
-    f.MGO = UTIL::openRequiredFile("MGO.MKF");
-    f.BALL = UTIL::openRequiredFile("BALL.MKF");
-    f.DATA = UTIL::openRequiredFile("DATA.MKF");
-    f.F = UTIL::openRequiredFile("F.MKF");
-    f.FIRE = UTIL::openRequiredFile("FIRE.MKF");
-    f.RGM = UTIL::openRequiredFile("RGM.MKF");
-    f.SSS = UTIL::openRequiredFile("SSS.MKF");
+    f.FBP = MKFUtil::OpenRequiredFile("FBP.MKF");
+    f.MGO = MKFUtil::OpenRequiredFile("MGO.MKF");
+    f.BALL = MKFUtil::OpenRequiredFile("BALL.MKF");
+    f.DATA = MKFUtil::OpenRequiredFile("DATA.MKF");
+    f.F = MKFUtil::OpenRequiredFile("F.MKF");
+    f.FIRE = MKFUtil::OpenRequiredFile("FIRE.MKF");
+    f.RGM = MKFUtil::OpenRequiredFile("RGM.MKF");
+    f.SSS = MKFUtil::OpenRequiredFile("SSS.MKF");
 
     lp_object_desc_ = UI::loadObjectDesc("desc.dat");
 
@@ -43,16 +50,15 @@ void GlobalVars::RemoveMagic(uint16_t player_role, uint16_t magic) {
 
 /**
  * 对指定角色设置持续状态
- * @param player_role   
+ * @param player_role
  * @param status_id
  * @param num_round
  * @return
  */
 bool GlobalVars::SetPlayerStatus(uint16_t player_role, uint16_t status_id, uint16_t num_round) {
-    bool if_success=true;
+    bool if_success = true;
 #ifndef PAL_CLASSIC
-    if (status_id==CharaStatus::kSlow&&player_status_[player_role][CharaStatus::kHaste]>0) {
-        
+    if (status_id == CharaStatus::kSlow && player_status_[player_role][CharaStatus::kHaste] > 0) {
     }
 #endif
 }

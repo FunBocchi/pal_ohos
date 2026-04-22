@@ -73,10 +73,7 @@ private:
     uint32_t frame_num_;
 
 public:
-    static GlobalVars *GetInstance() {
-        static GlobalVars instance;
-        return &instance;
-    }
+    static GlobalVars *GetInstance();
     // 删除拷贝构造函数和赋值运算符
     GlobalVars(const GlobalVars &) = delete;
     GlobalVars &operator=(const GlobalVars &) = delete;
