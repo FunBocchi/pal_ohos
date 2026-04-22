@@ -11,12 +11,13 @@ add_subdirectory(common)
 add_subdirectory(core)
 
 # 创建最终的共享库（或静态库，根据 N-API 需求）
-add_library(game_core
+# 将 core 目录中定义的所有 OBJECT 库链接进来
+add_library(
+    game_core
     SHARED
     $<TARGET_OBJECTS:core_objects>
 )
 
-# 将 core 目录中定义的所有 OBJECT 库链接进来
 # 我们会在 core 的 CMakeLists.txt 中将 OBJECT 目标名收集到一个变量中
 target_include_directories(game_core
     PUBLIC

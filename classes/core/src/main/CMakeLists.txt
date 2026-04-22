@@ -1,5 +1,10 @@
 # 收集当前模块的所有源文件
-file(GLOB MAIN_SOURCES "*.cpp")
+#file(GLOB MAIN_SOURCES "*.cpp")
+set(
+    MAIN_SOURCES
+    dummy.cpp
+    global.cpp
+)
 
 # 创建object库
 add_library(main_objects
