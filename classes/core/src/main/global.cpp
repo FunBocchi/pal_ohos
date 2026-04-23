@@ -5,7 +5,10 @@
 // please include "napi/native_api.h".
 
 #include "global.h"
+#include "defs/palcommon.h"
 #include "mkf_util.h"
+#include "structs/ui/ui.h"
+#include <cstdint>
 
 /**
  * 由于将各种方法封装进了GlobalVars类中，同时该类为单例模式，因此做出了一定程度上的修改
@@ -16,6 +19,10 @@ GlobalVars *GlobalVars::GetInstance() {
     return &instance;
 }
 
+/**
+ * 打开并读取文件流
+ * @return
+ */
 bool GlobalVars::InitGlobals() {
     auto f = getF();
     // 打开文件
@@ -31,6 +38,7 @@ bool GlobalVars::InitGlobals() {
     lp_object_desc_ = UI::loadObjectDesc("desc.dat");
 
     current_save_slot_ = 1;
+
     return true;
 }
 
@@ -61,4 +69,78 @@ bool GlobalVars::SetPlayerStatus(uint16_t player_role, uint16_t status_id, uint1
     if (status_id == CharaStatus::kSlow && player_status_[player_role][CharaStatus::kHaste] > 0) {
     }
 #endif
+}
+
+/**
+ * 获取角色综合攻击力
+ * @param player_role
+ * @return
+ */
+uint16_t GlobalVars::GetPlayerAttackStrength(uint16_t player_role) {
+    uint16_t w;
+
+    w = g_.player_roles.attack_strength[player_role];
+
+    for (int32_t i = 0; i <= MAX_PLAYER_EQUIPMENTS; ++i) {
+        w += equipment_effect_[i].attack_strength[player_role];
+    }
+    return w;
+}
+
+/**
+ * 获取综合魔法攻击力
+ * @param player_role
+ * @return
+ */
+uint16_t GlobalVars::GetPlayerMagicStrength(uint16_t player_role) {
+    uint16_t w;
+
+    w = g_.player_roles.magic_strength[player_role];
+
+    for (int32_t i; i <= MAX_PLAYER_EQUIPMENTS; ++i) {
+        w += equipment_effect_[i].magic_strength[player_role];
+    }
+    return w;
+}
+
+/**
+ * 获取综合防御力
+ * @param player_role
+ * @return
+ */
+uint16_t GlobalVars::GetPlayerDefence(uint16_t player_role) {
+    uint16_t w;
+    w = g_.player_roles.defence[player_role];
+    for (int32_t i = 0; i <= MAX_PLAYER_EQUIPMENTS; ++i) {
+        w += equipment_effect_[i].defence[player_role];
+    }
+    return w;
+}
+
+/**
+ * 获取敏捷值
+ * @param player_role
+ * @return
+ */
+uint16_t GlobalVars::GetPlayerDexterity(uint16_t player_role) {
+    uint16_t w;
+    w = g_.player_roles.dexterity[player_role];
+#ifdef PAL_CLASSIC
+    for (int32_t i = 0; i <= MAX_PLAYER_EQUIPMENTS; ++i)
+#else
+    for (int32_t i = 0; i <= MAX_PLAYER_EQUIPMENTS - 1; ++i)
+#endif
+    {
+        w += equipment_effect_[i].dexterity[player_role];
+    }
+    return w;
+}
+
+uint16_t GlobalVars::GetPlayerFleeRate(uint16_t player_role) {
+    uint16_t w;
+    w = g_.player_roles.flee_rate[player_role];
+    for (int32_t i = 0; i <= MAX_PLAYER_EQUIPMENTS; ++i) {
+        w += equipment_effect_[i].flee_rate[player_role];
+    }
+    return w;
 }

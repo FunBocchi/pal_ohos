@@ -7,10 +7,10 @@
 #ifndef PAL_OHOS_UI_H
 #define PAL_OHOS_UI_H
 
-#include "src/ui/object_desc.h"
+#include "object_desc.h"
 class UI {
 public:
-    static ObjectDesc *loadObjectDesc(const char *lpsz_file_name);
+    static ObjectDesc *loadObjectDesc(const char *file_name);
 };
 
 #endif // PAL_OHOS_UI_H
