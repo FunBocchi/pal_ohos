@@ -10,9 +10,9 @@
 #include <cstdint>
 // 库存
 struct Inventory {
-    uint16_t item_;
-    uint16_t amount_;
-    uint16_t amount_in_use_;
+    uint16_t item;
+    uint16_t amount;
+    uint16_t amount_in_use;
 };
 
 #endif // pal_ohos_INVENTORY_H

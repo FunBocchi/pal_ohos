@@ -16,20 +16,20 @@
 
 union ObjectDos {
     uint16_t data[6];
-    ObjectPlayer player_;
-    ObjectItemDos item_;
-    ObjectMagicDOS magic_;
-    ObjectEnemy enemy_;
-    ObjectPoison poison_;
+    ObjectPlayer player;
+    ObjectItemDos item;
+    ObjectMagicDOS magic;
+    ObjectEnemy enemy;
+    ObjectPoison poison;
 };
 
 union Object {
     uint16_t data[7];
-    ObjectPlayer player_;
-    ObjectItem item_;
-    ObjectMagic magic_;
-    ObjectEnemy enemy_;
-    ObjectPoison poison_;
+    ObjectPlayer player;
+    ObjectItem item;
+    ObjectMagic magic;
+    ObjectEnemy enemy;
+    ObjectPoison poison;
 };
 
 #endif // pal_ohos_OBJECT_H

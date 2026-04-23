@@ -92,7 +92,7 @@ public:
     int32_t GetItemAmount(uint16_t item);
     void UpdateEquipments();
     void CompressInventory();
-    void RemoveEquipmentEffect(uint16_t player_role, uint16_t equipPart);
+    void RemoveEquipmentEffect(uint16_t player_role, uint16_t equip_part);
     void AddPoisonForPlayer(uint16_t player_role, uint16_t poison_id);
     void CurePoisonByKind(uint16_t player_role, uint16_t poison_id);
     void CurePoisonByLevel(uint16_t player_role, uint16_t max_level);
@@ -118,6 +118,13 @@ public:
 private:
     GlobalVars() = default;
     ~GlobalVars() = default;
+    
+    void InitGlobalGameData();
+    void SaveGame_WIN(int32_t save_slot,uint16_t saved_times);
+    void SaveGame_DOS(int32_t save_slot,uint16_t saved_times);
+    void SaveGame_Common(int32_t save_slot,uint16_t saved_times);
+    bool LoadGame(int32_t save_slot);
+    void LoadDefaultGame();
 public:
     GameData getG(){
         return g_;

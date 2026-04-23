@@ -10,11 +10,11 @@
 #include <cstdint>
 // 毒药
 struct ObjectPoison {
-    uint16_t level_;
-    uint16_t color_;
-    uint16_t player_script_;
-    uint16_t reserved_;
-    uint16_t enemy_script_;
+    uint16_t level;
+    uint16_t color;
+    uint16_t player_script;
+    uint16_t reserved;
+    uint16_t enemy_script;
 };
 
 #endif // pal_ohos_OBJECT_POISON_H
